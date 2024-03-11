@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Taylor Time",
+    "name": "Swiftie Swipes",
     "slug": "taylors-version",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -15,7 +15,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "bundleIdentifier": "com.andywladis.taylorsversion"
     },
     "android": {
       "adaptiveIcon": {
@@ -25,6 +26,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4fb6ed26-9877-4e53-b0f9-43531335ec2c"
+      }
     }
   }
 }

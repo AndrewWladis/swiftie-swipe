@@ -39,7 +39,7 @@ const Home = ({ setScreen }) => {
     return (
         <LinearGradient colors={colorEras[color]} style={styles.homeContent}>
             <View style={styles.titleContainer}>
-                <Text style={styles.title}>Taylor Time</Text>
+                <Text style={styles.title}>Swiftie Swipes</Text>
                 <Text style={styles.date}>
                     {date.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' })}
                 </Text>

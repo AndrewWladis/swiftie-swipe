@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     quote: {
-        fontSize: 30,
+        fontSize: 27,
         color: 'white',
         fontWeight: '800',
         textAlign: 'center',

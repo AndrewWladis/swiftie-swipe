@@ -21,7 +21,7 @@ function GameOver({ score, setScreen }) {
         try {
             const result = await Share.share({
                 message:
-                    `Score on ${(date.getMonth() + 1) + '/' + date.getDate()}: ${score}/10, from Taylor Time, now on iOS`,
+                    `Score on ${(date.getMonth() + 1) + '/' + date.getDate()}: ${score}/10, from Swiftie Swipes, now on iOS`,
                 //put link to app store here later
             });
             if (result.action === Share.sharedAction) {
