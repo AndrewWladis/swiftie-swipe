@@ -63,7 +63,7 @@ export default function App() {
       <StatusBar style="dark" />
       <View style={styles.homeCaptionView}>
         <Text style={[styles.caption, { fontFamily: '1989' }]}>T.S.</Text>
-        <Text style={[styles.caption, { fontFamily: '1989' }]}>13</Text>
+        <Text style={[styles.caption, { fontFamily: '1989' }]}>{date.getFullYear()}</Text>
       </View>
     </View>
   );

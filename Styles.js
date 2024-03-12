@@ -115,7 +115,8 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 50,
         color: 'white',
-        fontWeight: '800'
+        fontWeight: '800',
+        textAlign: 'center',
     },
     titleContainer: {
         alignItems: 'center',
