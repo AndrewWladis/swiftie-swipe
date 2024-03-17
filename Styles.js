@@ -6,6 +6,12 @@ const styles = StyleSheet.create({
         color: 'black',
         fontWeight: '800'
     },
+    captionMidnights: {
+        fontSize: 40,
+        color: '#546488',
+        fontWeight: '800',
+        marginBottom: 10
+    },
     date: {
         fontSize: 22,
         fontWeight: '700',
@@ -37,12 +43,27 @@ const styles = StyleSheet.create({
         borderRightWidth: 30,
         borderBottomWidth: 10,
     },
+    homeMidnights: {
+        flex: 1,
+        borderColor: '#e8e9e1',
+        borderLeftWidth: 20,
+        borderTopWidth: 10,
+        borderRightWidth: 20,
+        borderBottomWidth: 30,
+    },
     homeCaptionView: {
         height: 113,
         backgroundColor: '#e8e9e1',
         justifyContent: 'space-between',
         flexDirection: 'row',
         alignItems: 'center'
+    },
+    homeCaptionViewMidnights: {
+        height: 113,
+        backgroundColor: '#e8e9e1',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        alignItems: 'flex-end'
     },
     homeContent: {
         flex: 1,

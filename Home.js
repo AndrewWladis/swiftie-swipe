@@ -17,6 +17,7 @@ const Home = ({ setScreen }) => {
         const timer = setInterval(() => {
             setDate(new Date());
         }, 1000);
+
         return () => {
             clearInterval(timer);
         };

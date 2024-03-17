@@ -10,8 +10,9 @@ import { useFonts, loadAsync } from 'expo-font';
 export default function App() {
   const [screen, setScreen] = useState('Home')
   const [date, setDate] = useState(new Date());
-  const [fontLoaded, setFontLoaded] = useState(false)
-  const [score, setScore] = useState([])
+  const [isMidnight, setIsMidnight] = useState(false);
+  const [fontLoaded, setFontLoaded] = useState(false);
+  const [score, setScore] = useState([]);
 
 
   useEffect(() => {
@@ -23,19 +24,27 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    if (date.getHours() === 0) {
+      setIsMidnight(true)
+    }
+  }, [date]);
+
   useFonts({
     '1989': require('./assets/Taylor Swift Handwriting.ttf'),
     'rep': require('./assets/OldeEnglish.ttf'),
+    'midnights': require('./assets/coolvetica.otf')
   });
 
   useEffect(() => {
     loadAsync({
       '1989': require('./assets/Taylor Swift Handwriting.ttf'),
       'rep': require('./assets/OldeEnglish.ttf'),
+      'midnights': require('./assets/coolvetica.otf')
     })
-    .then(() => {
-     setFontLoaded(true)
-    }) 
+      .then(() => {
+        setFontLoaded(true)
+      })
   }, [])
 
   function returnScreen() {
@@ -57,14 +66,26 @@ export default function App() {
 
   if (!fontLoaded) return null
 
-  return (
-    <View style={styles.home}>
-      {returnScreen()}
-      <StatusBar style="dark" />
-      <View style={styles.homeCaptionView}>
-        <Text style={[styles.caption, { fontFamily: '1989' }]}>T.S.</Text>
-        <Text style={[styles.caption, { fontFamily: '1989' }]}>{date.getFullYear()}</Text>
+  if (isMidnight) {
+    return (
+      <View style={styles.homeMidnights}>
+        <View style={styles.homeCaptionViewMidnights}>
+          <Text style={[styles.captionMidnights, { fontFamily: 'midnights' }]}>Swiftie Swipes</Text>
+        </View>
+        {returnScreen()}
+        <StatusBar style="dark" />
       </View>
-    </View>
-  );
+    );
+  } else {
+    return (
+      <View style={styles.home}>
+        {returnScreen()}
+        <StatusBar style="dark" />
+        <View style={styles.homeCaptionView}>
+          <Text style={[styles.caption, { fontFamily: '1989' }]}>T.S.</Text>
+          <Text style={[styles.caption, { fontFamily: '1989' }]}>{date.getFullYear()}</Text>
+        </View>
+      </View>
+    );
+  }
 }
