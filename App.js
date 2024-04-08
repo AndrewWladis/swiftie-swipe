@@ -12,7 +12,7 @@ import { useFonts, loadAsync } from 'expo-font';
 export default function App() {
   const [screen, setScreen] = useState('Home')
   const [date, setDate] = useState(new Date());
-  const [theme, setTheme] = useState('TTPD');
+  const [theme, setTheme] = useState('1989');
   const [fontLoaded, setFontLoaded] = useState(false);
   const [score, setScore] = useState([]);
 
