@@ -5,8 +5,8 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { useNetInfo } from "@react-native-community/netinfo";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Home = ({ setScreen }) => {
-    const colorEras = [["#272729", "#062030"], ["#47d1ff", "#f5a2e0"], ["#948543", "#decb76"]];
+const Home = ({ setScreen, theme }) => {
+    const colorEras = [["#47d1ff", "#f5a2e0"], ["#948543", "#decb76"]];
 
     const [color, setColor] = useState(Math.floor(Math.random() * colorEras.length))
     const [date, setDate] = useState(new Date());
@@ -38,21 +38,47 @@ const Home = ({ setScreen }) => {
     }
 
     return (
-        <LinearGradient colors={colorEras[color]} style={styles.homeContent}>
-            <View style={styles.titleContainer}>
-                <Text style={styles.title}>Swiftie Swipe</Text>
-                <Text style={styles.date}>
-                    {date.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' })}
-                </Text>
-            </View>
-            {netInfo.isConnected ?
-                <TouchableOpacity onPress={() => getData()} style={styles.startButton}>
-                    <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>...ready for it?</Text>
-                </TouchableOpacity>
-                :
-                <Text style={styles.date}>Connect to the Internet to play</Text>
-            }
-        </LinearGradient>
+        <>
+            {(theme === 'TTPD') ? (
+                <LinearGradient colors={['#dbdbdb', '#858585']} style={styles.homeContent}>
+                    <View style={styles.titleContainer}>
+                        <Text style={[styles.titleTTPD, { fontFamily: 'ttpd' }]}>SWIFTIE SWIPE</Text>
+                        <Text style={[styles.dateTTPD, { fontFamily: 'ttpd' }]}>
+                            {date.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' })}
+                        </Text>
+                    </View>
+                    {netInfo.isConnected ?
+                        <TouchableOpacity onPress={() => getData()} style={styles.startButton}>
+                            <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>...ready for it?</Text>
+                        </TouchableOpacity>
+                        :
+                        <Text style={[styles.date, { fontFamily: 'ttpd' }]}>Connect to the Internet to play</Text>
+                    }
+                    <TouchableOpacity onPress={() => setScreen('Style')} style={styles.startButton}>
+                        <Text style={[styles.startButtonText, { fontFamily: '1989' }]}>Style</Text>
+                    </TouchableOpacity>
+                </LinearGradient>
+            ) : (
+                <LinearGradient colors={colorEras[color]} style={styles.homeContent}>
+                    <View style={styles.titleContainer}>
+                        <Text style={styles.title}>Swiftie Swipe</Text>
+                        <Text style={styles.date}>
+                            {date.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' })}
+                        </Text>
+                    </View>
+                    {netInfo.isConnected ?
+                        <TouchableOpacity onPress={() => getData()} style={styles.startButton}>
+                            <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>...ready for it?</Text>
+                        </TouchableOpacity>
+                        :
+                        <Text style={styles.date}>Connect to the Internet to play</Text>
+                    }
+                    <TouchableOpacity onPress={() => setScreen('Style')} style={styles.startButton}>
+                        <Text style={[styles.startButtonText, { fontFamily: '1989' }]}>Style</Text>
+                    </TouchableOpacity>
+                </LinearGradient>
+            )}
+        </>
     )
 }
 

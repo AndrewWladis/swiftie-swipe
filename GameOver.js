@@ -3,8 +3,8 @@ import { View, Text, TouchableOpacity, Share } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import styles from './Styles'
 
-function GameOver({ score, setScreen }) {
-    const colorEras = [["#272729", "#062030"], ["#47d1ff", "#f5a2e0"], ["#948543", "#decb76"]];
+function GameOver({ score, setScreen, theme }) {
+    const colorEras = [["#47d1ff", "#f5a2e0"], ["#948543", "#decb76"]];
     const [date, setDate] = useState(new Date());
     const [color, setColor] = useState(Math.floor(Math.random() * colorEras.length))
 
@@ -21,7 +21,7 @@ function GameOver({ score, setScreen }) {
         try {
             const result = await Share.share({
                 message:
-                    `Score on ${(date.getMonth() + 1) + '/' + date.getDate()}: ${score}/10, from Swiftie Swipes, now on iOS`,
+                    `Score on ${(date.getMonth() + 1) + '/' + date.getDate()}: ${score}/10, from Swiftie Swipes, now on iOS https://apps.apple.com/us/app/swiftie-swipe/id6479224086`,
                 //put link to app store here later
             });
             if (result.action === Share.sharedAction) {
@@ -39,7 +39,20 @@ function GameOver({ score, setScreen }) {
     };
 
     return (
-        <LinearGradient colors={colorEras[color]} style={styles.gameOverScreen}>
+        <>
+        {(theme === 'TTPD') ? (
+            <LinearGradient colors={['#dbdbdb', '#858585']} style={styles.gameOverScreen}>
+            <Text style={[styles.score, { fontFamily: 'ttpd' }]}>{score.match(/✅/g).length}/10</Text>
+            <Text style={[styles.date, { fontFamily: 'ttpd' }]}> on {date.toLocaleDateString()}</Text>
+            <TouchableOpacity onPress={() => onShare()} style={styles.shareButton}>
+                <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>share</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => { setScreen('Home') }} style={styles.shareButton}>
+                <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>back home</Text>
+            </TouchableOpacity>
+        </LinearGradient>
+        ) : (
+            <LinearGradient colors={colorEras[color]} style={styles.gameOverScreen}>
             <Text style={styles.score}>{score.match(/✅/g).length}/10</Text>
             <Text style={styles.date}> on {date.toLocaleDateString()}</Text>
             <TouchableOpacity onPress={() => onShare()} style={styles.shareButton}>
@@ -49,6 +62,8 @@ function GameOver({ score, setScreen }) {
                 <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>back home</Text>
             </TouchableOpacity>
         </LinearGradient>
+        )}
+        </>
     )
 }
 

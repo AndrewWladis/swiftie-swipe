@@ -1,6 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({ 
+    backHomeTTPDText: {
+        fontSize: 24,
+        color: 'black'
+    },
     caption: {
         fontSize: 54,
         color: 'black',
@@ -12,8 +16,26 @@ const styles = StyleSheet.create({
         fontWeight: '800',
         marginBottom: 10
     },
+    check: {
+        width: 22,
+        height: 22,
+        backgroundColor: 'black',
+        borderRadius: 5
+    },
+    checked: {
+        width: 22,
+        height: 22,
+        backgroundColor: 'green',
+        borderRadius: 5
+    },
     date: {
         fontSize: 22,
+        fontWeight: '700',
+        color: 'white',
+        textAlign: 'center'
+    },
+    dateTTPD: {
+        fontSize: 19,
         fontWeight: '700',
         color: 'white',
         textAlign: 'center'
@@ -50,6 +72,14 @@ const styles = StyleSheet.create({
         borderTopWidth: 10,
         borderRightWidth: 20,
         borderBottomWidth: 30,
+    },
+    homeTTPD: {
+        flex: 1,
+        borderColor: '#ebe9df',
+        borderTopWidth: 60,
+        borderLeftWidth: 30,
+        borderRightWidth: 30,
+        borderBottomWidth: 40,
     },
     homeCaptionView: {
         height: 113,
@@ -90,6 +120,10 @@ const styles = StyleSheet.create({
         fontWeight: '800',
         textAlign: 'center'
     },
+    row: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
     questionContainer: {
         flex: 1,
         backgroundColor: '#191a1c',
@@ -122,11 +156,23 @@ const styles = StyleSheet.create({
     startButton: {
         backgroundColor: 'white',
         padding: 15,
-        borderRadius: 10
+        borderRadius: 10,
+        marginTop: 10
     },
     startButtonText: {
         fontSize: 35,
         color: 'black'
+    },
+    themeButton: {
+        borderRadius: 3,
+        margin: 10,
+        color: 'black'
+    },
+    themeFont: {
+        fontSize: 30,
+    },
+    themeList: {
+        flexDirection: 'column'
     },
     timer: {
         fontSize: 40,
@@ -134,7 +180,13 @@ const styles = StyleSheet.create({
         fontWeight: '900'
     },
     title: {
-        fontSize: 50,
+        fontSize: 40,
+        color: 'white',
+        fontWeight: '800',
+        textAlign: 'center',
+    },
+    titleTTPD: {
+        fontSize: 27,
         color: 'white',
         fontWeight: '800',
         textAlign: 'center',
