@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, TouchableOpacity, Share } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
+import * as StoreReview from 'expo-store-review';
 import styles from './Styles'
 
 function GameOver({ score, setScreen, theme }) {
@@ -9,6 +10,8 @@ function GameOver({ score, setScreen, theme }) {
     const [color, setColor] = useState(Math.floor(Math.random() * colorEras.length))
 
     useEffect(() => {
+        StoreReview.requestReview();
+
         const timer = setInterval(() => {
             setDate(new Date());
         }, 1000);
