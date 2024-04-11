@@ -9,14 +9,14 @@ function Style({ setScreen, setTheme, theme }) {
     const colorEras = [["#47d1ff", "#f5a2e0"], ["#948543", "#decb76"]];
     const themes = [{
         font: '1989',
-        text: '1989',
+        text: '2024',
         value: '1989',
         color: 'black'
     },
     {
         font: 'midnights',
         value: 'midnights',
-        text: 'Midnights',
+        text: 'Night',
         color: '#546488'
     },
     {
