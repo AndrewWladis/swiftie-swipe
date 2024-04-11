@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, TouchableOpacity, Share } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
+import { FontAwesome5 } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './Styles'
 
@@ -26,7 +27,7 @@ function Style({ setScreen, setTheme, theme }) {
     }]
     const [checked, setChecked] = useState(0)
     const [color, setColor] = useState(Math.floor(Math.random() * colorEras.length))
-    
+
     useEffect(() => {
         if (theme === '1989') {
             setChecked(0)
@@ -39,9 +40,9 @@ function Style({ setScreen, setTheme, theme }) {
 
     const setItem = async (value) => {
         try {
-          await AsyncStorage.setItem('swiftieSwipeTheme', value);
+            await AsyncStorage.setItem('swiftieSwipeTheme', value);
         } catch (e) {
-          // saving error
+            // saving error
         }
     };
 
@@ -52,19 +53,17 @@ function Style({ setScreen, setTheme, theme }) {
                     <View style={styles.themeList}>
                         {themes.map((font, index) => (
                             <View style={styles.row} key={index}>
-                                <TouchableOpacity key={index} onPress={() => {
-                                    setChecked(index)
-                                    setTheme(font.value)
-                                    setItem(font.value)
-                                }} style={styles.themeButton}>
-                                    {(checked === index) ? (
-                                        <View style={styles.checked}></View>
-                                    ) : (
-                                        <View style={styles.check}></View>
-                                    )}
-                                </TouchableOpacity>
-                            <Text style={[styles.themeFont, { fontFamily: font.font, color: font.color }]}> {font.text} </Text>
-                        </View>
+                                {(checked === index) ? (
+                                    <>
+                                        <FontAwesome5 name="heart" size={40} color="pink" style={{ transform: [{ rotate: '-10deg' }] }} />
+                                        <Text style={[styles.themeFont, { fontFamily: font.font, color: font.color }]}> {font.text} </Text>
+                                    </>
+                                ) : (
+                                    <TouchableOpacity onPress={() => { setChecked(index); setItem(font.value); setTheme(font.value) }} style={{ marginLeft: 40 }}>
+                                        <Text style={[styles.themeFont, { fontFamily: font.font, color: font.color }]}> {font.text} </Text>
+                                    </TouchableOpacity>
+                                )}
+                            </View>
                         ))}
                     </View>
                     <TouchableOpacity onPress={() => setScreen('Home')} style={styles.startButton}>
@@ -76,19 +75,17 @@ function Style({ setScreen, setTheme, theme }) {
                     <View style={styles.themeList}>
                         {themes.map((font, index) => (
                             <View style={styles.row} key={index}>
-                                <TouchableOpacity key={index} onPress={() => {
-                                    setChecked(index)
-                                    setTheme(font.value)
-                                    setItem(font.value)
-                                }} style={styles.themeButton}>
-                                    {(checked === index) ? (
-                                        <View style={styles.checked}></View>
-                                    ) : (
-                                        <View style={styles.check}></View>
-                                    )}
-                                </TouchableOpacity>
-                            <Text style={[styles.themeFont, { fontFamily: font.font, color: font.color }]}> {font.text} </Text>
-                        </View>
+                                {(checked === index) ? (
+                                    <>
+                                        <FontAwesome5 name="heart" size={40} color="pink" style={{ transform: [{ rotate: '-10deg' }] }} />
+                                        <Text style={[styles.themeFont, { fontFamily: font.font, color: font.color }]}> {font.text} </Text>
+                                    </>
+                                ) : (
+                                    <TouchableOpacity onPress={() => { setChecked(index); setItem(font.value); setTheme(font.value) }} style={{ marginLeft: 40 }}>
+                                        <Text style={[styles.themeFont, { fontFamily: font.font, color: font.color }]}> {font.text} </Text>
+                                    </TouchableOpacity>
+                                )}
+                            </View>
                         ))}
                     </View>
                     <TouchableOpacity onPress={() => setScreen('Home')} style={styles.startButton}>

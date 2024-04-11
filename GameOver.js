@@ -21,7 +21,7 @@ function GameOver({ score, setScreen, theme }) {
         try {
             const result = await Share.share({
                 message:
-                    `Score on ${(date.getMonth() + 1) + '/' + date.getDate()}: ${score}/10, from Swiftie Swipes, now on iOS https://apps.apple.com/us/app/swiftie-swipe/id6479224086`,
+                    `Score on ${(date.getMonth() + 1) + '/' + date.getDate()}: ${score}/10, from Swiftie Swipe, now on iOS https://apps.apple.com/us/app/swiftie-swipe/id6479224086`,
                 //put link to app store here later
             });
             if (result.action === Share.sharedAction) {

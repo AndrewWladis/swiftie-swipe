@@ -16,18 +16,6 @@ const styles = StyleSheet.create({
         fontWeight: '800',
         marginBottom: 10
     },
-    check: {
-        width: 22,
-        height: 22,
-        backgroundColor: 'black',
-        borderRadius: 5
-    },
-    checked: {
-        width: 22,
-        height: 22,
-        backgroundColor: 'green',
-        borderRadius: 5
-    },
     date: {
         fontSize: 22,
         fontWeight: '700',
@@ -169,7 +157,7 @@ const styles = StyleSheet.create({
         color: 'black'
     },
     themeFont: {
-        fontSize: 30,
+        fontSize: 50,
     },
     themeList: {
         flexDirection: 'column'

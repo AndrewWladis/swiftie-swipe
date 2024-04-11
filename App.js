@@ -89,7 +89,7 @@ export default function App() {
       return (
         <View style={styles.homeMidnights}>
           <View style={styles.homeCaptionViewMidnights}>
-            <Text style={[styles.captionMidnights, { fontFamily: 'midnights' }]}>Swiftie Swipes</Text>
+            <Text style={[styles.captionMidnights, { fontFamily: 'midnights' }]}>Swiftie Swipe</Text>
           </View>
           {returnScreen()}
           <StatusBar style="dark" />
