@@ -36,7 +36,7 @@ function BraceletPage({ setScreen, theme }) {
     const [beads, setBeads] = useState([]);
     const [beadColor, setBeadColor] = useState('a')
     const [beadText, setBeadText] = useState('🫶')
-    const [beadFont, setBeadFont] = useState('none')
+    const [beadFont, setBeadFont] = useState('a')
 
     const setItem = async (value) => {
         try {
@@ -124,7 +124,6 @@ function BraceletPage({ setScreen, theme }) {
                             <TextInput
                                 style={styles.braceletInput}
                                 maxLength={1}
-                                value={beadText}
                                 onChangeText={text => setBeadText(text)}
                             />
                             {(
@@ -159,6 +158,7 @@ function BraceletPage({ setScreen, theme }) {
                     <View style={styles.braceletContainer}>
                         <View style={styles.bracelet}>
                             {beads.map((bead, index) => {
+                                console.log(bead)
                                 return (
                                     bead.charAt(1) !== '%' ? (
                                         <View style={[styles.bead, { backgroundColor: colors[bead.charAt(0)] }]}>
@@ -194,7 +194,6 @@ function BraceletPage({ setScreen, theme }) {
                             <TextInput
                                 style={styles.braceletInput}
                                 maxLength={1}
-                                value={beadText}
                                 onChangeText={text => setBeadText(text)}
                             />
                             {(
