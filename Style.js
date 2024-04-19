@@ -7,24 +7,23 @@ import styles from './Styles'
 
 function Style({ setScreen, setTheme, theme }) {
     const colorEras = [["#47d1ff", "#f5a2e0"], ["#948543", "#decb76"]];
+    
     const themes = [{
-        font: '1989',
-        text: '2024',
+        text: '1989',
         value: '1989',
         color: 'black'
     },
     {
-        font: 'midnights',
         value: 'midnights',
-        text: 'Night',
+        text: 'Midnights',
         color: '#546488'
     },
     {
-        font: 'ttpd',
-        text: 'TTPD',
         value: 'TTPD',
+        text: 'TTPD',
         color: 'black'
     }]
+
     const [checked, setChecked] = useState(0)
     const [color, setColor] = useState(Math.floor(Math.random() * colorEras.length))
 
@@ -56,18 +55,21 @@ function Style({ setScreen, setTheme, theme }) {
                                 {(checked === index) ? (
                                     <>
                                         <FontAwesome5 name="heart" size={40} color="pink" style={{ transform: [{ rotate: '-10deg' }] }} />
-                                        <Text style={[styles.themeFont, { fontFamily: font.font, color: font.color }]}> {font.text} </Text>
+                                        <Text style={[styles.themeFont, { fontFamily: font.value, color: font.color }]}> {font.text} </Text>
                                     </>
                                 ) : (
                                     <TouchableOpacity onPress={() => { setChecked(index); setItem(font.value); setTheme(font.value) }} style={{ marginLeft: 40 }}>
-                                        <Text style={[styles.themeFont, { fontFamily: font.font, color: font.color }]}> {font.text} </Text>
+                                        <Text style={[styles.themeFont, { fontFamily: font.value, color: font.color }]}> {font.text} </Text>
                                     </TouchableOpacity>
                                 )}
                             </View>
                         ))}
                     </View>
+                    <TouchableOpacity onPress={() => setScreen('Bracelet')} style={styles.braceletPageButton}>
+                        <Text style={[styles.braceletPageButtonText, { fontFamily: 'midnights' }]}>Make The Friendship Bracelet</Text>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={() => setScreen('Home')} style={styles.startButton}>
-                        <Text style={[styles.backHomeTTPDText, { fontFamily: 'ttpd' }]}>Back Home</Text>
+                        <Text style={[styles.backHomeTTPDText, { fontFamily: 'TTPD' }]}>Back Home</Text>
                     </TouchableOpacity>
                 </LinearGradient>
             ) : (
@@ -78,16 +80,19 @@ function Style({ setScreen, setTheme, theme }) {
                                 {(checked === index) ? (
                                     <>
                                         <FontAwesome5 name="heart" size={40} color="pink" style={{ transform: [{ rotate: '-10deg' }] }} />
-                                        <Text style={[styles.themeFont, { fontFamily: font.font, color: font.color }]}> {font.text} </Text>
+                                        <Text style={[styles.themeFont, { fontFamily: font.value, color: font.color }]}> {font.text} </Text>
                                     </>
                                 ) : (
                                     <TouchableOpacity onPress={() => { setChecked(index); setItem(font.value); setTheme(font.value) }} style={{ marginLeft: 40 }}>
-                                        <Text style={[styles.themeFont, { fontFamily: font.font, color: font.color }]}> {font.text} </Text>
+                                        <Text style={[styles.themeFont, { fontFamily: font.value, color: font.color }]}> {font.text} </Text>
                                     </TouchableOpacity>
                                 )}
                             </View>
                         ))}
                     </View>
+                    <TouchableOpacity onPress={() => setScreen('Bracelet')} style={styles.braceletPageButton}>
+                        <Text style={[styles.braceletPageButtonText, { fontFamily: 'midnights' }]}>Make The Friendship Bracelet</Text>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={() => setScreen('Home')} style={styles.startButton}>
                         <Text style={[styles.backHomeTTPDText, { fontFamily: '1989' }]}>Back Home</Text>
                     </TouchableOpacity>

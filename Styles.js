@@ -5,6 +5,122 @@ const styles = StyleSheet.create({
         fontSize: 24,
         color: 'black'
     },
+    bead: {
+        width: 29,
+        height: 29,
+        borderRadius: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    beadBlank: {
+        width: 14,
+        height: 23,
+        borderRadius: 20,
+        borderColor: 'black',
+        borderWidth: 0.2
+    },
+    beadColor: {
+        width: 30,
+        height: 30,
+        borderRadius: 50,
+        margin: 5
+    },
+    beadColorContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        maxWidth: '45%',
+        justifyContent: 'center'
+    },
+    beadFontContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        maxWidth: '10%',
+        justifyContent: 'center',
+        marginHorizontal: 10
+    },
+    beadText: {
+        fontSize: 22,
+        padding: 1,
+        fontWeight: '800',
+        alignSelf: 'center'
+    },
+    bracelet: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    braceletAddButton: {
+        backgroundColor: '#2cdb55',
+        width: 30,
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 30,
+        marginVertical: 13
+    },
+    braceletButton: {
+        backgroundColor: 'white',
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+        borderRadius: 10,
+        marginTop: 10
+    },
+    braceletButtonText: {
+        fontSize: 35,
+        color: 'white',
+        fontWeight: '900',
+        textAlign: 'center'
+    },
+    braceletContainerHome: {
+        marginTop: 50,
+    },
+    braceletContainer: {
+        marginVertical: 10,
+        width: '100%',
+    },
+    braceletControlPanel: {
+        flexDirection: 'row',
+        padding: 10,
+        margin: 10,
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        borderRadius: 10,
+    },
+    braceletControls: {
+        marginHorizontal: 10,
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
+    braceletInput: {
+        backgroundColor: 'white',
+        padding: 10,
+        borderRadius: 10,
+        width: '100%',
+        margin: 10,
+        textAlign: 'center',
+        fontSize: 20,
+        borderColor: 'black',
+        borderWidth: 1
+    },
+    braceletPageButton: {
+        backgroundColor: 'white',
+        padding: 15,
+        borderRadius: 10,
+        marginTop: 10
+    },
+    braceletPageButtonText: {
+        fontSize: 20,
+        color: 'black',
+        fontWeight: '800',
+        textAlign: 'center'
+    },
+    braceletRemoveButton: {
+        backgroundColor: '#f03835',
+        width: 30,
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 30,
+    },
     caption: {
         fontSize: 54,
         color: 'black',

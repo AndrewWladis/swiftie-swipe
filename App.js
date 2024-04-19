@@ -8,6 +8,7 @@ import GameOver from './GameOver'
 import Style from './Style'
 import React, { useEffect, useState } from 'react';
 import { useFonts, loadAsync } from 'expo-font';
+import BraceletPage from './BraceletPage';
 
 export default function App() {
   const [screen, setScreen] = useState('Home')
@@ -35,7 +36,8 @@ export default function App() {
   useFonts({
     '1989': require('./assets/Taylor Swift Handwriting.ttf'),
     'rep': require('./assets/OldeEnglish.ttf'),
-    'midnights': require('./assets/coolvetica.otf')
+    'midnights': require('./assets/coolvetica.otf'),
+    'TTPD': require('./assets/ttpd.ttf')
   });
 
   useEffect(() => {
@@ -43,7 +45,7 @@ export default function App() {
       '1989': require('./assets/Taylor Swift Handwriting.ttf'),
       'rep': require('./assets/OldeEnglish.ttf'),
       'midnights': require('./assets/coolvetica.otf'),
-      'ttpd': require('./assets/ttpd.ttf')
+      'TTPD': require('./assets/ttpd.ttf')
     })
       .then(() => {
         setFontLoaded(true)
@@ -74,6 +76,9 @@ export default function App() {
         break;
       case 'Style':
         return <Style setScreen={setScreen} setTheme={setTheme} theme={theme} />
+        break;
+      case 'Bracelet':
+        return <BraceletPage setScreen={setScreen} theme={theme} />
         break;
       default:
         break;

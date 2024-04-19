@@ -4,6 +4,8 @@ import styles from './Styles'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useNetInfo } from "@react-native-community/netinfo";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Bracelet from './Bracelet';
+
 
 const Home = ({ setScreen, theme }) => {
     const colorEras = [["#47d1ff", "#f5a2e0"], ["#948543", "#decb76"]];
@@ -42,17 +44,20 @@ const Home = ({ setScreen, theme }) => {
             {(theme === 'TTPD') ? (
                 <LinearGradient colors={['#dbdbdb', '#858585']} style={styles.homeContent}>
                     <View style={styles.titleContainer}>
-                        <Text style={[styles.titleTTPD, { fontFamily: 'ttpd' }]}>SWIFTIE SWIPE</Text>
-                        <Text style={[styles.dateTTPD, { fontFamily: 'ttpd' }]}>
+                        <Text style={[styles.titleTTPD, { fontFamily: 'TTPD' }]}>SWIFTIE SWIPE</Text>
+                        <Text style={[styles.dateTTPD, { fontFamily: 'TTPD' }]}>
                             {date.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' })}
                         </Text>
+                        <View style={styles.braceletContainerHome}>
+                            <Bracelet />
+                        </View>
                     </View>
                     {netInfo.isConnected ?
                         <TouchableOpacity onPress={() => getData()} style={styles.startButton}>
                             <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>...ready for it?</Text>
                         </TouchableOpacity>
                         :
-                        <Text style={[styles.date, { fontFamily: 'ttpd' }]}>Connect to the Internet to play</Text>
+                        <Text style={[styles.date, { fontFamily: 'TTPD' }]}>Connect to the Internet to play</Text>
                     }
                     <TouchableOpacity onPress={() => setScreen('Style')} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: '1989' }]}>Style</Text>
@@ -65,6 +70,9 @@ const Home = ({ setScreen, theme }) => {
                         <Text style={styles.date}>
                             {date.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' })}
                         </Text>
+                        <View style={styles.braceletContainerHome}>
+                            <Bracelet />
+                        </View>
                     </View>
                     {netInfo.isConnected ?
                         <TouchableOpacity onPress={() => getData()} style={styles.startButton}>

@@ -45,8 +45,8 @@ function GameOver({ score, setScreen, theme }) {
         <>
         {(theme === 'TTPD') ? (
             <LinearGradient colors={['#dbdbdb', '#858585']} style={styles.gameOverScreen}>
-            <Text style={[styles.score, { fontFamily: 'ttpd' }]}>{score.match(/✅/g).length}/10</Text>
-            <Text style={[styles.date, { fontFamily: 'ttpd' }]}> on {date.toLocaleDateString()}</Text>
+            <Text style={[styles.score, { fontFamily: 'TTPD' }]}>{score.match(/✅/g).length}/10</Text>
+            <Text style={[styles.date, { fontFamily: 'TTPD' }]}> on {date.toLocaleDateString()}</Text>
             <TouchableOpacity onPress={() => onShare()} style={styles.shareButton}>
                 <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>share</Text>
             </TouchableOpacity>
