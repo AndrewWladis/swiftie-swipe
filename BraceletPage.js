@@ -19,9 +19,9 @@ function BraceletPage({ setScreen, theme }) {
         'i': '#388bc9',
         'j': '#5f38c9',
         'k': '#eeb6f2',
-        'l': '#1c1c1c',
-        'm': '#cccccc',
-        'n': '#f2f2f2'
+        'l': '#ed5fb2',
+        'm': '#1c1c1c',
+        'n': '#cccccc'
     }
 
     const fonts = {
@@ -158,7 +158,6 @@ function BraceletPage({ setScreen, theme }) {
                     <View style={styles.braceletContainer}>
                         <View style={styles.bracelet}>
                             {beads.map((bead, index) => {
-                                console.log(bead)
                                 return (
                                     bead.charAt(1) !== '%' ? (
                                         <View style={[styles.bead, { backgroundColor: colors[bead.charAt(0)] }]}>
@@ -195,6 +194,8 @@ function BraceletPage({ setScreen, theme }) {
                                 style={styles.braceletInput}
                                 maxLength={1}
                                 onChangeText={text => setBeadText(text)}
+                                blurOnSubmit={true}
+
                             />
                             {(
                                 beadText.trim() !== '' ? (
