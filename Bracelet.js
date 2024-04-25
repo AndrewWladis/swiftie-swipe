@@ -124,9 +124,15 @@ function Bracelet() {
                     const beadData = returnBead(bead);
                     return (
                         beadData.text !== 'none' ? (
-                            <View key={index} style={[styles.bead, { backgroundColor: beadData.color }]}>
-                                <Text style={[styles.beadText, { fontFamily: beadData.font }]}>{beadData.text}</Text>
-                            </View>
+                            beadData.font !== 'none' ? (
+                                <View key={index} style={[styles.bead, { backgroundColor: beadData.color }]}>
+                                    <Text style={[styles.beadText, { fontFamily: beadData.font }]}>{beadData.text}</Text>
+                                </View>
+                            ) : (
+                                <View key={index} style={[styles.bead, { backgroundColor: beadData.color }]}>
+                                    <Text style={styles.beadText}>{beadData.text}</Text>
+                                </View>
+                            )
                         ) : (
                             <View key={index} style={[styles.beadBlank, { backgroundColor: beadData.color }]}>
                             </View>
