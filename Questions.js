@@ -5,6 +5,7 @@ import styles from './Styles'
 import { useNetInfo } from "@react-native-community/netinfo";
 
 function Questions({ setScreen, setScore }) {
+    const [externalData, setExternalData] = useState([])
     const [color, setColors] = useState('normal');
     const [isLoad, setLoad] = useState(true);
     const [quoteOpacity, setQuoteOpacity] = useState(1)
@@ -23,26 +24,46 @@ function Questions({ setScreen, setScore }) {
 
     useEffect(() => {
         const interval = setInterval(() => {
-          setTimer(timer => timer - 1);
-      
-          if (timer <= 0) {
-            isAnswer('Andy');
-            clearInterval(interval);
-            setTimer(0)
-          }
+            setTimer(timer => timer - 1);
+
+            if (timer <= 0) {
+                isAnswer('Andy');
+                clearInterval(interval);
+                setTimer(0)
+            }
         }, 1000);
-        
+
         return () => clearInterval(interval);
-      }, [isAnswer, timer]);
+    }, [isAnswer, timer]);
 
     useEffect(() => {
-        if (quote.quote.quote != 'Loading..') {
-            setQuoteOpacity(1)
-            setTimer(13)
-        } else {
-            setQuoteOpacity(0)
+        if (externalData.length > 0) {
+            if (quote.quote.quote != 'Loading..') {
+                setQuoteOpacity(1)
+                setTimer(13)
+            } else {
+                setQuoteOpacity(0)
+            }
         }
     }, [quote]);
+
+    useEffect(() => {
+        if (externalData.length > 0) {
+            if (isLoad) {
+                setQuote(externalData[0])
+                setLoad(false)
+            }
+    
+            getData();
+        }
+    }, [externalData])
+
+    useEffect(() => {
+        fetch('https://taylors-version.cyclic.app/today-challenge')
+            .then(response => response.json())
+            .then(data => setExternalData(data))
+    }, [])
+
 
     function blankState() {
         setQuote({
@@ -90,9 +111,7 @@ function Questions({ setScreen, setScore }) {
                 setTimeout(() => {
                     setColors('normal')
                     blankState()
-                    fetch('https://taylors-version.cyclic.app/today-challenge')
-                        .then(response => response.json())
-                        .then(data => setQuote(data[questionNumber]))
+                    setQuote(externalData[questionNumber])
                     setQuestionNumber(questionNumber + 1);
                     storeData(questionNumber)
 
@@ -105,14 +124,6 @@ function Questions({ setScreen, setScore }) {
             }
         }
     }
-    if (isLoad) {
-        fetch('https://taylors-version.cyclic.app/today-challenge')
-            .then(response => response.json())
-            .then(data => setQuote(data[0]))
-        setLoad(false)
-    }
-
-    getData();
 
     const returnColor = (num) => {
         if (color === 'normal') {
@@ -123,23 +134,32 @@ function Questions({ setScreen, setScore }) {
     }
 
     return (
-        <View style={styles.questionContainer}>
-            <View style={styles.headerContainer}>
-                <View style={styles.headerContent}>
-                    <Text style={styles.questionNumber}>Track #{questionNumber}</Text>
-                    <Text style={[styles.timer]}>{timer}</Text>
-                </View>
-                {netInfo.isConnected ? <Text style={[styles.quote, { opacity: quoteOpacity }]}>"{quote.quote.quote}"</Text> : () => { setScreen('Home') }}
-            </View>
-            {quote.options.map((element, index) => (
-                <TouchableOpacity onPress={() => { isAnswer(element) }} key={index}>
-                    <View style={[styles.option, { backgroundColor: returnColor(index), }]}>
-                        <Text style={styles.optionText}>{element}</Text>
+        <>
+            {
+                (externalData.length > 0) ? (
+                    <View style={styles.questionContainer}>
+                        <View style={styles.headerContainer}>
+                            <View style={styles.headerContent}>
+                                <Text style={styles.questionNumber}>Track #{questionNumber}</Text>
+                                <Text style={[styles.timer]}>{timer}</Text>
+                            </View>
+                            {netInfo.isConnected ? <Text style={[styles.quote, { opacity: quoteOpacity }]}>"{quote.quote.quote}"</Text> : () => { setScreen('Home') }}
+                        </View>
+                        {quote.options.map((element, index) => (
+                            <TouchableOpacity onPress={() => { isAnswer(element) }} key={index}>
+                                <View style={[styles.option, { backgroundColor: returnColor(index), }]}>
+                                    <Text style={styles.optionText}>{element}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        ))}
                     </View>
-                </TouchableOpacity>
-            ))}
-        </View>
-
+                ) : (
+                    <View style={styles.questionContainer}>
+                        <Text style={styles.quote}>Loading...</Text>
+                    </View>
+                )
+            }
+        </>
     )
 }
 

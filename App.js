@@ -81,6 +81,7 @@ export default function App() {
         return <BraceletPage setScreen={setScreen} theme={theme} />
         break;
       default:
+        return <Home setScreen={setScreen} theme={theme} />
         break;
     }
   }
