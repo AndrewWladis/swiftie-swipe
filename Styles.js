@@ -232,6 +232,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#191a1c',
     },
+    questionLoadingContainer: {
+        flex: 1,
+        backgroundColor: '#191a1c',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column'
+    },
     questionNumber: {
         fontSize: 20,
         color: 'white',
@@ -244,6 +251,79 @@ const styles = StyleSheet.create({
         fontWeight: '800',
         textAlign: 'center',
         paddingVertical: 20
+    },
+    quote1989: {
+        fontSize: 37,
+        color: '#43bfe6',
+        textAlign: 'center',
+        paddingVertical: 10,
+        fontFamily: '1989'
+    },
+    quoteDebut: {
+        fontSize: 27,
+        color: '#66ed6f',
+        textAlign: 'center',
+        paddingVertical: 10,
+        fontFamily: 'debut'
+    },
+    quoteEvermore: {
+        fontSize: 27,
+        color: '#f7e8cd',
+        textAlign: 'center',
+        paddingVertical: 10,
+        fontFamily: 'folklore'
+    },
+    quoteFearless: {
+        fontSize: 27,
+        color: '#f0e68c',
+        textAlign: 'center',
+        paddingVertical: 10,
+        fontFamily: 'fearless'
+    },
+    quoteFolklore: {
+        fontSize: 27,
+        color: '#baaa8f',
+        textAlign: 'center',
+        paddingVertical: 10,
+        fontFamily: 'folklore'
+    },
+    quoteLover: {
+        fontSize: 45,
+        color: '#e1aae6',
+        textAlign: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 10,
+        fontFamily: 'love'
+    },
+    quoteMidnight: {
+        fontSize: 27,
+        color: '#7485e8',
+        textAlign: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 10,
+        fontFamily: 'midnights'
+    },
+    quoteRep: {
+        fontSize: 37,
+        color: 'white',
+        textAlign: 'center',
+        paddingVertical: 10,
+        fontFamily: 'rep'
+    },
+    quoteSpeakNow: {
+        fontSize: 27,
+        color: '#722482',
+        textAlign: 'center',
+        paddingVertical: 10,
+        fontFamily: 'debut'
+    },
+    quoteTTPD: {
+        fontSize: 24,
+        color: '#aeaeb0',
+        textAlign: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 10,
+        fontFamily: 'TTPD'
     },
     score: {
         fontSize: 70,

@@ -37,7 +37,11 @@ export default function App() {
     '1989': require('./assets/Taylor Swift Handwriting.ttf'),
     'rep': require('./assets/OldeEnglish.ttf'),
     'midnights': require('./assets/coolvetica.otf'),
-    'TTPD': require('./assets/ttpd.ttf')
+    'TTPD': require('./assets/ttpd.ttf'),
+    'debut': require('./assets/debut.ttf'),
+    'fearless': require('./assets/fearless.ttf'),
+    'love': require('./assets/Love.ttf'),
+    'folklore': require('./assets/folklore.ttf')
   });
 
   useEffect(() => {
@@ -45,7 +49,11 @@ export default function App() {
       '1989': require('./assets/Taylor Swift Handwriting.ttf'),
       'rep': require('./assets/OldeEnglish.ttf'),
       'midnights': require('./assets/coolvetica.otf'),
-      'TTPD': require('./assets/ttpd.ttf')
+      'TTPD': require('./assets/ttpd.ttf'),
+      'debut': require('./assets/debut.ttf'),
+      'fearless': require('./assets/fearless.ttf'),
+      'love': require('./assets/Love.ttf'),
+      'folklore': require('./assets/folklore.ttf')
     })
       .then(() => {
         setFontLoaded(true)

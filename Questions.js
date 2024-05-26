@@ -53,13 +53,13 @@ function Questions({ setScreen, setScore }) {
                 setQuote(externalData[0])
                 setLoad(false)
             }
-    
+
             getData();
         }
     }, [externalData])
 
     useEffect(() => {
-        fetch('https://taylors-version.cyclic.app/today-challenge')
+        fetch('https://taylor-swift-game-backend.onrender.com/today-challenge')
             .then(response => response.json())
             .then(data => setExternalData(data))
     }, [])
@@ -154,8 +154,18 @@ function Questions({ setScreen, setScore }) {
                         ))}
                     </View>
                 ) : (
-                    <View style={styles.questionContainer}>
-                        <Text style={styles.quote}>Loading...</Text>
+
+                    <View style={styles.questionLoadingContainer}>
+                        <Text style={styles.quoteDebut}>Loading...</Text>
+                        <Text style={styles.quoteFearless}>loading...</Text>
+                        <Text style={styles.quoteSpeakNow}>Loading...</Text>
+                        <Text style={styles.quote1989}>Loading...</Text>
+                        <Text style={styles.quoteRep}>Loading...</Text>
+                        <Text style={styles.quoteLover}>Loading...</Text>
+                        <Text style={styles.quoteFolklore}>Loading...</Text>
+                        <Text style={styles.quoteEvermore}>Loading...</Text>
+                        <Text style={styles.quoteMidnight}>Loading...</Text>
+                        <Text style={styles.quoteTTPD}>LOADING...</Text>
                     </View>
                 )
             }
