@@ -33,7 +33,7 @@ const Home = ({ setScreen, theme }) => {
             } else {
                 setScreen('Questions')
                 await AsyncStorage.setItem('@date', date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear());
-            }
+            }setScreen('Questions')
         } catch (e) {
             // error reading value
         }
