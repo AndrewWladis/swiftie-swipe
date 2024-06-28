@@ -246,11 +246,12 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     quote: {
-        fontSize: 27,
+        fontSize: 25,
         color: 'white',
         fontWeight: '800',
         textAlign: 'center',
-        paddingVertical: 20
+        paddingVertical: 10,
+        paddingHorizontal: 5
     },
     quote1989: {
         fontSize: 37,

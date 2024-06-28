@@ -134,7 +134,7 @@ async function getQuestions() {
             let supportingSongs = [];
             while (supportingSongs.length < 3) {
                 if (Math.ceil(num / 13) > allSongs.length) {
-                    supportingSongs = ['22', 
+                    supportingSongs = ['loml', 
                                        'All Too Well (10 Minute Version) [From The Vault]', 
                                        'no body, no crime'];
                 }
@@ -312,7 +312,6 @@ function Questions({ setScreen, setScore }) {
                         ))}
                     </View>
                 ) : (
-
                     <View style={styles.questionLoadingContainer}>
                         <Text style={styles.quoteDebut}>Loading...</Text>
                         <Text style={styles.quoteFearless}>loading...</Text>
