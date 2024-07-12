@@ -2,7 +2,6 @@ import { View, Text, Alert, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './Styles'
 import { LinearGradient } from 'expo-linear-gradient'
-import { useNetInfo } from "@react-native-community/netinfo";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Bracelet from './Bracelet';
 
@@ -12,8 +11,6 @@ const Home = ({ setScreen, theme }) => {
 
     const [color, setColor] = useState(Math.floor(Math.random() * colorEras.length))
     const [date, setDate] = useState(new Date());
-
-    const netInfo = useNetInfo();
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -33,7 +30,7 @@ const Home = ({ setScreen, theme }) => {
             } else {
                 setScreen('Questions')
                 await AsyncStorage.setItem('@date', date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear());
-            }
+            }setScreen('Questions')
         } catch (e) {
             // error reading value
         }
@@ -52,13 +49,9 @@ const Home = ({ setScreen, theme }) => {
                             <Bracelet />
                         </View>
                     </View>
-                    {netInfo.isConnected ?
-                        <TouchableOpacity onPress={() => getData()} style={styles.startButton}>
-                            <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>...ready for it?</Text>
-                        </TouchableOpacity>
-                        :
-                        <Text style={[styles.date, { fontFamily: 'TTPD' }]}>Connect to the Internet to play</Text>
-                    }
+                    <TouchableOpacity onPress={() => getData()} style={styles.startButton}>
+                        <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>...ready for it?</Text>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={() => setScreen('Style')} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: '1989' }]}>Style</Text>
                     </TouchableOpacity>
@@ -74,13 +67,9 @@ const Home = ({ setScreen, theme }) => {
                             <Bracelet />
                         </View>
                     </View>
-                    {netInfo.isConnected ?
-                        <TouchableOpacity onPress={() => getData()} style={styles.startButton}>
+                    <TouchableOpacity onPress={() => getData()} style={styles.startButton}>
                             <Text style={[styles.startButtonText, { fontFamily: 'folklore' }]}>START GAME</Text>
                         </TouchableOpacity>
-                        :
-                        <Text style={styles.date}>Connect to the Internet to play</Text>
-                    }
                     <TouchableOpacity onPress={() => setScreen('Style')} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: '1989' }]}>Style</Text>
                     </TouchableOpacity>

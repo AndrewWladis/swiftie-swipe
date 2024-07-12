@@ -2,7 +2,6 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState, useEffect } from 'react'
 import styles from './Styles'
-import { useNetInfo } from "@react-native-community/netinfo";
 import lyrics from './lyrics';
 
 async function getQuestions() {
@@ -175,8 +174,6 @@ function Questions({ setScreen, setScore }) {
         options: ['Loading...', 'Loading...', 'Loading...', 'Loading...']
     });
 
-    const netInfo = useNetInfo();
-
     useEffect(() => {
         const interval = setInterval(() => {
             setTimer(timer => timer - 1);
@@ -301,7 +298,7 @@ function Questions({ setScreen, setScore }) {
                                 <Text style={styles.questionNumber}>Track #{questionNumber}</Text>
                                 <Text style={[styles.timer]}>{timer}</Text>
                             </View>
-                            {netInfo.isConnected ? <Text style={[styles.quote, { opacity: quoteOpacity }]}>"{quote.quote.quote}"</Text> : () => { setScreen('Home') }}
+                            <Text style={[styles.quote, { opacity: quoteOpacity }]}>"{quote.quote.quote}"</Text>
                         </View>
                         {quote.options.map((element, index) => (
                             <TouchableOpacity onPress={() => { isAnswer(element) }} key={index}>
