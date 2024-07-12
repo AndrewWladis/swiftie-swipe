@@ -43,29 +43,31 @@ function GameOver({ score, setScreen, theme }) {
 
     return (
         <>
-        {(theme === 'TTPD') ? (
-            <LinearGradient colors={['#dbdbdb', '#858585']} style={styles.gameOverScreen}>
-            <Text style={[styles.score, { fontFamily: 'TTPD' }]}>{score.match(/✅/g).length}/10</Text>
-            <Text style={[styles.date, { fontFamily: 'TTPD' }]}> on {date.toLocaleDateString()}</Text>
-            <TouchableOpacity onPress={() => onShare()} style={styles.shareButton}>
-                <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>share</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => { setScreen('Home') }} style={styles.shareButton}>
-                <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>back home</Text>
-            </TouchableOpacity>
-        </LinearGradient>
-        ) : (
-            <LinearGradient colors={colorEras[color]} style={styles.gameOverScreen}>
-            <Text style={styles.score}>{score.match(/✅/g).length}/10</Text>
-            <Text style={styles.date}> on {date.toLocaleDateString()}</Text>
-            <TouchableOpacity onPress={() => onShare()} style={styles.shareButton}>
-                <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>share</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => { setScreen('Home') }} style={styles.shareButton}>
-                <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>back home</Text>
-            </TouchableOpacity>
-        </LinearGradient>
-        )}
+            {(theme === 'TTPD') ? (
+                <LinearGradient colors={['#dbdbdb', '#858585']} style={styles.gameOverScreen}>
+                    <Text style={styles.endgame}>you have reached the <Text style={[styles.endgameRep, { fontFamily: 'rep' }]}>endgame</Text></Text>
+                    <Text style={[styles.score, { fontFamily: 'TTPD' }]}>{score.match(/✅/g).length}/10</Text>
+                    <Text style={[styles.date, { fontFamily: 'TTPD' }]}> on {date.toLocaleDateString()}</Text>
+                    <TouchableOpacity onPress={() => onShare()} style={styles.shareButton}>
+                        <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>share</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => { setScreen('Home') }} style={styles.shareButton}>
+                        <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>back home</Text>
+                    </TouchableOpacity>
+                </LinearGradient>
+            ) : (
+                <LinearGradient colors={colorEras[color]} style={styles.gameOverScreen}>
+                    <Text style={styles.endgame}>you have reached the <Text style={[styles.endgameRep, { fontFamily: 'rep' }]}>endgame</Text></Text>
+                    <Text style={styles.score}>{score.match(/✅/g).length}/10</Text>
+                    <Text style={styles.date}> on {date.toLocaleDateString()}</Text>
+                    <TouchableOpacity onPress={() => onShare()} style={styles.shareButton}>
+                        <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>share</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => { setScreen('Home') }} style={styles.shareButton}>
+                        <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>back home</Text>
+                    </TouchableOpacity>
+                </LinearGradient>
+            )}
         </>
     )
 }

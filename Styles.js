@@ -144,6 +144,18 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center'
     },
+    endgame: {
+        fontSize: 17,
+        color: 'white',
+        fontWeight: '800',
+        textAlign: 'center'
+    },
+    endgameRep: {
+        fontSize: 35,
+        color: 'white',
+        fontWeight: '800',
+        textAlign: 'center'
+    },
     gameOverScreen: {
         flex: 1,
         alignItems: 'center',

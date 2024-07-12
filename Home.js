@@ -33,7 +33,7 @@ const Home = ({ setScreen, theme }) => {
             } else {
                 setScreen('Questions')
                 await AsyncStorage.setItem('@date', date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear());
-            }setScreen('Questions')
+            }
         } catch (e) {
             // error reading value
         }
@@ -76,7 +76,7 @@ const Home = ({ setScreen, theme }) => {
                     </View>
                     {netInfo.isConnected ?
                         <TouchableOpacity onPress={() => getData()} style={styles.startButton}>
-                            <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>...ready for it?</Text>
+                            <Text style={[styles.startButtonText, { fontFamily: 'folklore' }]}>START GAME</Text>
                         </TouchableOpacity>
                         :
                         <Text style={styles.date}>Connect to the Internet to play</Text>
