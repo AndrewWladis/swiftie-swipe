@@ -95,9 +95,6 @@ export default function App() {
   }
 
 
-  if (!fontLoaded) return null
-
-
   switch (theme) {
     case 'midnights':
       return (
