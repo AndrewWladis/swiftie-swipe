@@ -302,9 +302,15 @@ function Questions({ setScreen, setScore }) {
                         </View>
                         {quote.options.map((element, index) => (
                             <TouchableOpacity onPress={() => { isAnswer(element) }} key={index}>
-                                <View style={[styles.option, { backgroundColor: returnColor(index), }]}>
-                                    <Text style={styles.optionText}>{element}</Text>
-                                </View>
+                                {(element === quote.quote.author && color === '#fc746a') ? (
+                                    <View style={[styles.option, { backgroundColor: '#5bde6a' }]}>
+                                        <Text style={styles.optionText}>{element}</Text>
+                                    </View>
+                                ) : (
+                                    <View style={[styles.option, { backgroundColor: returnColor(index), }]}>
+                                        <Text style={styles.optionText}>{element}</Text>
+                                    </View>
+                                )}
                             </TouchableOpacity>
                         ))}
                     </View>

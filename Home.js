@@ -36,6 +36,10 @@ const Home = ({ setScreen, theme }) => {
         }
     }
 
+    const startUnlimited = async () => {
+        setScreen('Unlimited')
+    }
+
     return (
         <>
             {(theme === 'TTPD') ? (
@@ -50,7 +54,10 @@ const Home = ({ setScreen, theme }) => {
                         </View>
                     </View>
                     <TouchableOpacity onPress={() => getData()} style={styles.startButton}>
-                        <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>...ready for it?</Text>
+                        <Text style={[styles.startButtonText, { fontFamily: 'TTPD' }]}>START GAME</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => startUnlimited()} style={styles.startButton}>
+                        <Text style={[styles.startButtonText, { fontFamily: 'TTPD' }]}>UNLIMITED</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => setScreen('Style')} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: '1989' }]}>Style</Text>
@@ -68,8 +75,11 @@ const Home = ({ setScreen, theme }) => {
                         </View>
                     </View>
                     <TouchableOpacity onPress={() => getData()} style={styles.startButton}>
-                            <Text style={[styles.startButtonText, { fontFamily: 'folklore' }]}>START GAME</Text>
-                        </TouchableOpacity>
+                        <Text style={[styles.startButtonText, { fontFamily: 'folklore' }]}>START GAME</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => startUnlimited()} style={styles.startButton}>
+                        <Text style={[styles.startButtonText, { fontFamily: 'folklore' }]}>UNLIMITED</Text>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={() => setScreen('Style')} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: '1989' }]}>Style</Text>
                     </TouchableOpacity>

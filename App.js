@@ -5,6 +5,7 @@ import styles from './Styles'
 import Home from './Home'
 import Questions from './Questions'
 import GameOver from './GameOver'
+import Unlimited from './Unlimited'
 import Style from './Style'
 import React, { useEffect, useState } from 'react';
 import { useFonts, loadAsync } from 'expo-font';
@@ -79,6 +80,9 @@ export default function App() {
       case 'Questions':
         return <Questions setScreen={setScreen} setScore={setScore} />
         break;
+      case 'Unlimited':
+        return <Unlimited setScreen={setScreen} />
+        break;
       case 'GameOver':
         return <GameOver setScreen={setScreen} score={score} theme={theme} />
         break;
@@ -93,7 +97,6 @@ export default function App() {
         break;
     }
   }
-
 
   switch (theme) {
     case 'midnights':
