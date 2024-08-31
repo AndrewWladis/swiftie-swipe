@@ -54,6 +54,7 @@ function GameOver({ score, setScreen, theme }) {
                     <TouchableOpacity onPress={() => { setScreen('Home') }} style={styles.shareButton}>
                         <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>back home</Text>
                     </TouchableOpacity>
+                    <Text style={[styles.creditText, { fontFamily: 'TTPD' }]}>Created by @andywl27 on Instagram</Text>
                 </LinearGradient>
             ) : (
                 <LinearGradient colors={colorEras[color]} style={styles.gameOverScreen}>
@@ -66,6 +67,7 @@ function GameOver({ score, setScreen, theme }) {
                     <TouchableOpacity onPress={() => { setScreen('Home') }} style={styles.shareButton}>
                         <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>back home</Text>
                     </TouchableOpacity>
+                    <Text style={[styles.creditText, { fontFamily: 'TTPD' }]}>Created by @andywl27 on insta</Text>
                 </LinearGradient>
             )}
         </>

@@ -166,6 +166,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#0f0f0f',
         padding: 10,
         borderRadius: 10,
+        maxHeight: '30%',
         height: '30%'
     },
     headerContent: {
@@ -239,6 +240,13 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
         alignItems: 'center'
+    },
+    creditText: {
+        fontSize: 13,
+        color: 'white',
+        fontWeight: '800',
+        textAlign: 'center',
+        marginTop: 10
     },
     questionContainer: {
         flex: 1,

@@ -6,7 +6,7 @@ import lyrics from './lyrics';
 
 async function getQuestions() {
     let now = new Date();
-    let num = ((((now.getDay() + 3) * (now.getDate() + now.getMonth() + 1)) + (now.getMonth() * 3)) * 2)
+    let num = Math.floor(((((now.getDay() + 3) * (now.getDate() + now.getMonth() + 1)) + (now.getMonth() * 3)) * 2) / 3)
 
     let allSongs = ['22', 'All Too Well (10 Minute Version) [From The Vault]',
                  'Babe [From The Vault]', 'Begin Again',
@@ -120,6 +120,7 @@ async function getQuestions() {
     
     let j = Math.ceil(num / 640);
     
+    console.log(lyricsArray.length / num);
     for (let i = num; i < lyricsArray.length; i += num) {
         if (quizList.length < 10) {
             const item = {
@@ -154,7 +155,7 @@ async function getQuestions() {
             break;
         }
     }
-    
+    console.log(JSON.stringify(quizList));
     return JSON.stringify(quizList);
 }
 
