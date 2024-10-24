@@ -6,7 +6,7 @@ import lyrics from './lyrics';
 
 async function getQuestions() {
     let now = new Date();
-    let num = Math.floor(((((now.getDay() + 3) * (now.getDate() + now.getMonth() + 1)) + (now.getMonth() * 3)) * 2) / 3)
+    let num = Math.floor(Math.random() * 640);
 
     let allSongs = ['22', 'All Too Well (10 Minute Version) [From The Vault]',
                  'Babe [From The Vault]', 'Begin Again',
@@ -119,7 +119,7 @@ async function getQuestions() {
     });
     
     let j = Math.ceil(num / 640);
-
+    
     for (let i = num; i < lyricsArray.length; i += num) {
         if (quizList.length < 10) {
             const item = {
@@ -158,9 +158,9 @@ async function getQuestions() {
     return JSON.stringify(quizList);
 }
 
-function Questions({ setScreen, setScore }) {
+function Unlimited({ setScreen }) {
     const [externalData, setExternalData] = useState([])
-    const [color, setColors] = useState('normal');
+    const [color, setColor] = useState('normal');
     const [isLoad, setLoad] = useState(true);
     const [quoteOpacity, setQuoteOpacity] = useState(1)
     const [questionNumber, setQuestionNumber] = useState(1);
@@ -256,27 +256,28 @@ function Questions({ setScreen, setScore }) {
     const isAnswer = (ele) => {
         if (color === 'normal' && quote.quote.author != 'Andy Wladis') {
             if (ele === quote.quote.author) {
-                setColors('#5bde6a')
+                setColor('#5bde6a')
                 setQuestionArr(questionArr + '✅');
             } else {
-                setColors('#fc746a')
+                setColor('#fc746a')
                 setQuestionArr(questionArr + '❌');
             }
-            if (questionNumber < 10) {
-                setTimeout(() => {
-                    setColors('normal')
-                    blankState()
-                    setQuote(externalData[questionNumber])
-                    setQuestionNumber(questionNumber + 1);
-                    storeData(questionNumber)
-
-                }, 1500)
-            } else {
-                setTimeout(() => {
-                    setScore('✅' + questionArr)
-                    setScreen('GameOver')
-                }, 1000)
-            }
+            setTimeout(() => {
+                setColor('normal')
+                blankState()
+                setQuote(externalData[questionNumber])
+                setQuestionNumber(questionNumber + 1);
+                storeData(questionNumber)
+                if (questionNumber === 9) {
+                    setQuestionNumber(0)
+                    const fetchQuestions = async () => {
+                        const data = await getQuestions();
+                        setExternalData(JSON.parse(data));
+                    };
+            
+                    fetchQuestions();
+                }
+            }, 1500)
         }
     }
 
@@ -295,7 +296,9 @@ function Questions({ setScreen, setScore }) {
                     <View style={styles.questionContainer}>
                         <View style={styles.headerContainer}>
                             <View style={styles.headerContent}>
-                                <Text style={styles.questionNumber}>Track #{questionNumber}</Text>
+                                <TouchableOpacity onPress={() => setScreen('Home')}>
+                                    <Text style={styles.questionNumber}>{'<'} Back Home</Text>
+                                </TouchableOpacity>
                                 <Text style={[styles.timer]}>{timer}</Text>
                             </View>
                             <Text style={[styles.quote, { opacity: quoteOpacity }]}>"{quote.quote.quote}"</Text>
@@ -333,4 +336,4 @@ function Questions({ setScreen, setScore }) {
     )
 }
 
-export default Questions
+export default Unlimited
