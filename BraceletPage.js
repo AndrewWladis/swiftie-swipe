@@ -103,30 +103,10 @@ function BraceletPage({ setScreen, theme }) {
                         </View>
                     </View>
                     <View style={styles.braceletControlPanel}>
-                        <View style={styles.beadColorContainer}>
-                            {Object.keys(colors).map(key => (
-                                <TouchableOpacity key={key} style={[styles.beadColor, { backgroundColor: colors[key] }]} onPress={() => {
-                                    setBeadColor(key)
-                                }}>
-                                </TouchableOpacity>
-                            ))}
-                        </View>
-                        <View style={styles.beadFontContainer}>
-                            {Object.keys(fonts).map(key => (
-                                <TouchableOpacity key={key} style={[styles.beadColor, { backgroundColor: colors[beadColor] }]} onPress={() => {
-                                    setBeadFont(key)
-                                }}>
-                                    <Text style={[styles.beadText, { fontFamily: fonts[key] }]}>{key}</Text>
-                                </TouchableOpacity>
-                            ))}
-                        </View>
                         <View style={styles.braceletControls}>
-                            <TextInput
-                                style={styles.braceletInput}
-                                maxLength={1}
-                                onChangeText={text => setBeadText(text)}
-                            />
-                            {(
+                            <View style={styles.previewBead}>
+                                <Text style={styles.braceletControlPanelText}>Preview</Text>
+                                {(
                                 beadText.trim() !== '' ? (
                                     <View style={[styles.bead, { backgroundColor: colors[beadColor] }]}>
                                         <Text style={[styles.beadText, { fontFamily: fonts[beadFont] }]}>{beadText}</Text>
@@ -136,24 +116,60 @@ function BraceletPage({ setScreen, theme }) {
                                     </View>
                                 )
                             )}
-                            <TouchableOpacity style={styles.braceletAddButton} onPress={() => {
-                                addBead()
-                            }}>
-                                <Text style={styles.braceletButtonText}>+</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.braceletRemoveButton} onPress={() => {
-                                removeLastBead()
-                            }}>
-                                <Text style={styles.braceletButtonText}>-</Text>
-                            </TouchableOpacity>
+                            </View>
+                            <View style={styles.previewBead}>
+                                <TouchableOpacity style={styles.braceletAddButton} onPress={() => {
+                                    addBead()
+                                }}>
+                                    <Text style={styles.braceletButtonText}>Add Bead</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.braceletRemoveButton} onPress={() => {
+                                    removeLastBead()
+                                    }}>
+                                    <Text style={styles.braceletButtonText}>Remove Bead</Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     </View>
-
+                    <View style={styles.braceletControlPanel}>
+                        <Text style={styles.braceletControlPanelText}>Choose Bead Color</Text>
+                        <View style={styles.beadColorContainer}>
+                            {Object.keys(colors).map(key => (
+                                <TouchableOpacity key={key} style={[styles.beadColor, { backgroundColor: colors[key] }]} onPress={() => {
+                                    setBeadColor(key)
+                                }}>
+                                </TouchableOpacity>
+                            ))}
+                        </View>
+                    </View>
+                    <View style={styles.braceletControlPanel}>
+                        <View style={styles.beadFontContainer}>
+                            <Text style={styles.braceletControlPanelText}>Choose Bead Font</Text>
+                            <View style={styles.beadColorContainer}>
+                                {Object.keys(fonts).map(key => (
+                                    <TouchableOpacity key={key} style={[styles.beadColor, { backgroundColor: colors[beadColor] }]} onPress={() => {
+                                        setBeadFont(key)
+                                    }}>
+                                        <Text style={[styles.beadText, { fontFamily: fonts[key] }]}>{key}</Text>
+                                    </TouchableOpacity>
+                                ))}
+                            </View>
+                        </View>
+                    </View>
+                    <View style={styles.braceletControlPanel}>
+                        <Text style={styles.braceletControlPanelText}>Enter Bead Character</Text>
+                            <TextInput
+                                style={styles.braceletInput}
+                                maxLength={1}
+                                onChangeText={text => setBeadText(text)}
+                                blurOnSubmit={true}
+                            />
+                    </View>
                 </LinearGradient>
             ) : (
                 <LinearGradient colors={colorEras[color]} style={styles.homeContent}>
                     <TouchableOpacity onPress={() => setScreen('Home')} style={styles.startButton}>
-                        <Text style={[styles.backHomeTTPDText, { fontFamily: '1989' }]}>Back Home</Text>
+                        <Text style={[styles.startButtonText, { fontFamily: '1989' }]}>Back Home</Text>
                     </TouchableOpacity>
                     <View style={styles.braceletContainer}>
                         <View style={styles.bracelet}>
@@ -172,32 +188,10 @@ function BraceletPage({ setScreen, theme }) {
                         </View>
                     </View>
                     <View style={styles.braceletControlPanel}>
-                        <View style={styles.beadColorContainer}>
-                            {Object.keys(colors).map(key => (
-                                <TouchableOpacity key={key} style={[styles.beadColor, { backgroundColor: colors[key] }]} onPress={() => {
-                                    setBeadColor(key)
-                                }}>
-                                </TouchableOpacity>
-                            ))}
-                        </View>
-                        <View style={styles.beadFontContainer}>
-                            {Object.keys(fonts).map(key => (
-                                <TouchableOpacity key={key} style={[styles.beadColor, { backgroundColor: colors[beadColor] }]} onPress={() => {
-                                    setBeadFont(key)
-                                }}>
-                                    <Text style={[styles.beadText, { fontFamily: fonts[key] }]}>{key}</Text>
-                                </TouchableOpacity>
-                            ))}
-                        </View>
                         <View style={styles.braceletControls}>
-                            <TextInput
-                                style={styles.braceletInput}
-                                maxLength={1}
-                                onChangeText={text => setBeadText(text)}
-                                blurOnSubmit={true}
-
-                            />
-                            {(
+                            <View style={styles.previewBead}>
+                                <Text style={styles.braceletControlPanelText}>Preview</Text>
+                                {(
                                 beadText.trim() !== '' ? (
                                     <View style={[styles.bead, { backgroundColor: colors[beadColor] }]}>
                                         <Text style={[styles.beadText, { fontFamily: fonts[beadFont] }]}>{beadText}</Text>
@@ -207,17 +201,54 @@ function BraceletPage({ setScreen, theme }) {
                                     </View>
                                 )
                             )}
-                            <TouchableOpacity style={styles.braceletAddButton} onPress={() => {
-                                addBead()
-                            }}>
-                                <Text style={styles.braceletButtonText}>+</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.braceletRemoveButton} onPress={() => {
-                                removeLastBead()
-                            }}>
-                                <Text style={styles.braceletButtonText}>-</Text>
-                            </TouchableOpacity>
+                            </View>
+                            <View style={styles.previewBead}>
+                                <TouchableOpacity style={styles.braceletAddButton} onPress={() => {
+                                    addBead()
+                                }}>
+                                    <Text style={styles.braceletButtonText}>Add Bead</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.braceletRemoveButton} onPress={() => {
+                                    removeLastBead()
+                                    }}>
+                                    <Text style={styles.braceletButtonText}>Remove Bead</Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
+                    </View>
+                    <View style={styles.braceletControlPanel}>
+                        <Text style={styles.braceletControlPanelText}>Choose Bead Color</Text>
+                        <View style={styles.beadColorContainer}>
+                            {Object.keys(colors).map(key => (
+                                <TouchableOpacity key={key} style={[styles.beadColor, { backgroundColor: colors[key] }]} onPress={() => {
+                                    setBeadColor(key)
+                                }}>
+                                </TouchableOpacity>
+                            ))}
+                        </View>
+                    </View>
+                    <View style={styles.braceletControlPanel}>
+                        <View style={styles.beadFontContainer}>
+                            <Text style={styles.braceletControlPanelText}>Choose Bead Font</Text>
+                            <View style={styles.beadColorContainer}>
+                                {Object.keys(fonts).map(key => (
+                                    <TouchableOpacity key={key} style={[styles.beadColor, { backgroundColor: colors[beadColor] }]} onPress={() => {
+                                        setBeadFont(key)
+                                    }}>
+                                        <Text style={[styles.beadText, { fontFamily: fonts[key] }]}>{key}</Text>
+                                    </TouchableOpacity>
+                                ))}
+                            </View>
+                        </View>
+                    </View>
+                    <View style={styles.braceletControlPanel}>
+                        <Text style={styles.braceletControlPanelText}>Enter Bead Character</Text>
+                            <TextInput
+                                style={styles.braceletInput}
+                                maxLength={1}
+                                onChangeText={text => setBeadText(text)}
+                                blurOnSubmit={true}
+                            />
                     </View>
                 </LinearGradient>
             )}

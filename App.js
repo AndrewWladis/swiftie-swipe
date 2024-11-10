@@ -42,7 +42,8 @@ export default function App() {
     'debut': require('./assets/debut.ttf'),
     'fearless': require('./assets/fearless.ttf'),
     'love': require('./assets/Love.ttf'),
-    'folklore': require('./assets/folklore.ttf')
+    'folklore': require('./assets/folklore.ttf'),
+    'folklorev2': require('./assets/IMFePIit28P.ttf')
   });
 
   useEffect(() => {
@@ -54,7 +55,8 @@ export default function App() {
       'debut': require('./assets/debut.ttf'),
       'fearless': require('./assets/fearless.ttf'),
       'love': require('./assets/Love.ttf'),
-      'folklore': require('./assets/folklore.ttf')
+      'folklore': require('./assets/folklore.ttf'),
+      'folklorev2': require('./assets/IMFePIit28P.ttf')
     })
       .then(() => {
         setFontLoaded(true)
@@ -99,16 +101,6 @@ export default function App() {
   }
 
   switch (theme) {
-    case 'midnights':
-      return (
-        <View style={styles.homeMidnights}>
-          <View style={styles.homeCaptionViewMidnights}>
-            <Text style={[styles.captionMidnights, { fontFamily: 'midnights' }]}>Swiftie Swipe</Text>
-          </View>
-          {returnScreen()}
-          <StatusBar style="dark" />
-        </View>
-      )
     case '1989':
       return (
         <View style={styles.home}>

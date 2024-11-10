@@ -7,9 +7,6 @@ import Bracelet from './Bracelet';
 
 
 const Home = ({ setScreen, theme }) => {
-    const colorEras = [["#47d1ff", "#f5a2e0"], ["#948543", "#decb76"]];
-
-    const [color, setColor] = useState(Math.floor(Math.random() * colorEras.length))
     const [date, setDate] = useState(new Date());
 
     useEffect(() => {
@@ -54,7 +51,7 @@ const Home = ({ setScreen, theme }) => {
                         </View>
                     </View>
                     <TouchableOpacity onPress={() => getData()} style={styles.startButton}>
-                        <Text style={[styles.startButtonText, { fontFamily: 'TTPD' }]}>START GAME</Text>
+                        <Text style={[styles.startButtonText, { fontFamily: 'TTPD' }]}>TODAY'S CHALLENGE</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => startUnlimited()} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: 'TTPD' }]}>UNLIMITED</Text>
@@ -64,10 +61,10 @@ const Home = ({ setScreen, theme }) => {
                     </TouchableOpacity>
                 </LinearGradient>
             ) : (
-                <LinearGradient colors={colorEras[color]} style={styles.homeContent}>
+                <LinearGradient colors={["#47d1ff", "#f5a2e0"]} style={styles.homeContent}>
                     <View style={styles.titleContainer}>
                         <Text style={styles.title}>Swiftie Swipe</Text>
-                        <Text style={styles.date}>
+                        <Text style={[styles.date, { fontFamily: '1989' }]}>
                             {date.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' })}
                         </Text>
                         <View style={styles.braceletContainerHome}>
@@ -75,10 +72,10 @@ const Home = ({ setScreen, theme }) => {
                         </View>
                     </View>
                     <TouchableOpacity onPress={() => getData()} style={styles.startButton}>
-                        <Text style={[styles.startButtonText, { fontFamily: 'folklore' }]}>START GAME</Text>
+                        <Text style={[styles.startButtonText, { fontFamily: 'folklorev2' }]}>today's challenge</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => startUnlimited()} style={styles.startButton}>
-                        <Text style={[styles.startButtonText, { fontFamily: 'folklore' }]}>UNLIMITED</Text>
+                        <Text style={[styles.startButtonText, { fontFamily: 'folklorev2' }]}>unlimited</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => setScreen('Style')} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: '1989' }]}>Style</Text>

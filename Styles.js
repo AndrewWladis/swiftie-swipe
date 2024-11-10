@@ -28,13 +28,11 @@ const styles = StyleSheet.create({
     beadColorContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        maxWidth: '45%',
         justifyContent: 'center'
     },
     beadFontContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        maxWidth: '10%',
         justifyContent: 'center',
         marginHorizontal: 10
     },
@@ -42,21 +40,23 @@ const styles = StyleSheet.create({
         fontSize: 22,
         padding: 1,
         fontWeight: '800',
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
     bracelet: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+        shadowColor: 'white',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 1,
+        shadowRadius: 15,
     },
     braceletAddButton: {
         backgroundColor: '#2cdb55',
-        width: 30,
-        height: 40,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 30,
-        marginVertical: 13
+        marginBottom: 5
     },
     braceletButton: {
         backgroundColor: 'white',
@@ -66,9 +66,10 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     braceletButtonText: {
-        fontSize: 35,
+        fontSize: 20,
+        padding: 10,
         color: 'white',
-        fontWeight: '900',
+        fontWeight: '800',
         textAlign: 'center'
     },
     braceletContainerHome: {
@@ -79,44 +80,51 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     braceletControlPanel: {
-        flexDirection: 'row',
-        padding: 10,
-        margin: 10,
+        flexDirection: 'column',
+        padding: 5,
+        margin: 5,
+        width: '100%',
         backgroundColor: 'rgba(0, 0, 0, 0.2)',
         borderRadius: 10,
     },
+    braceletControlPanelText: {
+        fontSize: 25,
+        color: 'white',
+        fontWeight: '800',
+        textAlign: 'center',
+        marginBottom: 10
+    },
     braceletControls: {
-        marginHorizontal: 10,
-        flexDirection: 'column',
+        flexDirection: 'row',
         alignItems: 'center'
     },
     braceletInput: {
         backgroundColor: 'white',
         padding: 10,
         borderRadius: 10,
-        width: '100%',
-        margin: 10,
         textAlign: 'center',
         fontSize: 20,
         borderColor: 'black',
+        width: 100,
+        alignSelf: 'center',
         borderWidth: 1
     },
     braceletPageButton: {
-        backgroundColor: 'white',
         padding: 15,
         borderRadius: 10,
-        marginTop: 10
+        marginTop: 10,
+        borderColor: 'white',
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        borderWidth: 3,
     },
     braceletPageButtonText: {
         fontSize: 20,
-        color: 'black',
+        color: 'white',
         fontWeight: '800',
         textAlign: 'center'
     },
     braceletRemoveButton: {
         backgroundColor: '#f03835',
-        width: 30,
-        height: 40,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 30,
@@ -133,7 +141,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     date: {
-        fontSize: 22,
+        fontSize: 25,
         fontWeight: '700',
         color: 'white',
         textAlign: 'center'
@@ -177,9 +185,9 @@ const styles = StyleSheet.create({
     home: {
         flex: 1,
         borderColor: '#e8e9e1',
-        borderTopWidth: 60,
-        borderLeftWidth: 30,
-        borderRightWidth: 30,
+        borderTopWidth: 55,
+        borderLeftWidth: 20,
+        borderRightWidth: 20,
         borderBottomWidth: 10,
     },
     homeMidnights: {
@@ -236,6 +244,12 @@ const styles = StyleSheet.create({
         color: 'black',
         fontWeight: '800',
         textAlign: 'center'
+    },
+    previewBead: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 5,
+        flexDirection: 'column'
     },
     row: {
         flexDirection: 'row',
@@ -359,14 +373,17 @@ const styles = StyleSheet.create({
         margin: 20
     },
     startButton: {
-        backgroundColor: 'white',
+        borderColor: 'white',
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        borderWidth: 3,
         padding: 15,
         borderRadius: 10,
         marginTop: 10
     },
     startButtonText: {
         fontSize: 35,
-        color: 'black'
+        textAlign: 'center',
+        color: 'white'
     },
     themeButton: {
         borderRadius: 3,
@@ -374,7 +391,7 @@ const styles = StyleSheet.create({
         color: 'black'
     },
     themeFont: {
-        fontSize: 50,
+        fontSize: 40,
     },
     themeList: {
         flexDirection: 'column'

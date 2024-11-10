@@ -9,14 +9,9 @@ function Style({ setScreen, setTheme, theme }) {
     const colorEras = [["#47d1ff", "#f5a2e0"], ["#948543", "#decb76"]];
     
     const themes = [{
-        text: '1989',
+        text: 'folklovermore',
         value: '1989',
         color: 'black'
-    },
-    {
-        value: 'midnights',
-        text: 'Midnights',
-        color: '#546488'
     },
     {
         value: 'TTPD',
@@ -94,7 +89,7 @@ function Style({ setScreen, setTheme, theme }) {
                         <Text style={[styles.braceletPageButtonText, { fontFamily: 'midnights' }]}>Make The Friendship Bracelet</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => setScreen('Home')} style={styles.startButton}>
-                        <Text style={[styles.backHomeTTPDText, { fontFamily: '1989' }]}>Back Home</Text>
+                        <Text style={[styles.startButtonText, { fontFamily: '1989' }]}>Back Home</Text>
                     </TouchableOpacity>
                 </LinearGradient>
             )}
