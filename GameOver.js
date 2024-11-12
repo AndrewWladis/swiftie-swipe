@@ -5,9 +5,7 @@ import * as StoreReview from 'expo-store-review';
 import styles from './Styles'
 
 function GameOver({ score, setScreen, theme }) {
-    const colorEras = [["#47d1ff", "#f5a2e0"], ["#948543", "#decb76"]];
     const [date, setDate] = useState(new Date());
-    const [color, setColor] = useState(Math.floor(Math.random() * colorEras.length))
 
     useEffect(() => {
         StoreReview.requestReview();
@@ -48,24 +46,24 @@ function GameOver({ score, setScreen, theme }) {
                     <Text style={styles.endgame}>you have reached the <Text style={[styles.endgameRep, { fontFamily: 'rep' }]}>endgame</Text></Text>
                     <Text style={[styles.score, { fontFamily: 'TTPD' }]}>{score.match(/✅/g).length}/10</Text>
                     <Text style={[styles.date, { fontFamily: 'TTPD' }]}> on {date.toLocaleDateString()}</Text>
-                    <TouchableOpacity onPress={() => onShare()} style={styles.shareButton}>
+                    <TouchableOpacity onPress={() => onShare()} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>share</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { setScreen('Home') }} style={styles.shareButton}>
+                    <TouchableOpacity onPress={() => { setScreen('Home') }} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>back home</Text>
                     </TouchableOpacity>
                     <Text style={[styles.creditText, { fontFamily: 'TTPD' }]}>Created by @andywl27 on Instagram</Text>
                 </LinearGradient>
             ) : (
-                <LinearGradient colors={colorEras[color]} style={styles.gameOverScreen}>
+                <LinearGradient colors={["#47d1ff", "#f5a2e0"]} style={styles.gameOverScreen}>
                     <Text style={styles.endgame}>you have reached the <Text style={[styles.endgameRep, { fontFamily: 'rep' }]}>endgame</Text></Text>
                     <Text style={styles.score}>{score.match(/✅/g).length}/10</Text>
                     <Text style={styles.date}> on {date.toLocaleDateString()}</Text>
-                    <TouchableOpacity onPress={() => onShare()} style={styles.shareButton}>
-                        <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>share</Text>
+                    <TouchableOpacity onPress={() => onShare()} style={styles.startButton}>
+                        <Text style={[styles.startButtonText, { fontFamily: 'folklorev2' }]}>share</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { setScreen('Home') }} style={styles.shareButton}>
-                        <Text style={[styles.startButtonText, { fontFamily: 'rep' }]}>back home</Text>
+                    <TouchableOpacity onPress={() => { setScreen('Home') }} style={styles.startButton}>
+                        <Text style={[styles.startButtonText, { fontFamily: 'folklorev2' }]}>back home</Text>
                     </TouchableOpacity>
                     <Text style={[styles.creditText, { fontFamily: 'TTPD' }]}>Created by @andywl27 on insta</Text>
                 </LinearGradient>

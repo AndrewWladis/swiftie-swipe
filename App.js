@@ -8,33 +8,18 @@ import GameOver from './GameOver'
 import Unlimited from './Unlimited'
 import Style from './Style'
 import React, { useEffect, useState } from 'react';
-import { useFonts, loadAsync } from 'expo-font';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 import BraceletPage from './BraceletPage';
+
 
 export default function App() {
   const [screen, setScreen] = useState('Home')
   const [date, setDate] = useState(new Date());
   const [theme, setTheme] = useState('1989');
-  const [fontLoaded, setFontLoaded] = useState(false);
   const [score, setScore] = useState([]);
 
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setDate(new Date());
-    }, 1000);
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (date.getHours() === 0) {
-      setTheme('midnights')
-    }
-  }, [date]);
-
-  useFonts({
+  const [fontsLoaded] = useFonts({
     '1989': require('./assets/Taylor Swift Handwriting.ttf'),
     'rep': require('./assets/OldeEnglish.ttf'),
     'midnights': require('./assets/coolvetica.otf'),
@@ -47,21 +32,20 @@ export default function App() {
   });
 
   useEffect(() => {
-    loadAsync({
-      '1989': require('./assets/Taylor Swift Handwriting.ttf'),
-      'rep': require('./assets/OldeEnglish.ttf'),
-      'midnights': require('./assets/coolvetica.otf'),
-      'TTPD': require('./assets/ttpd.ttf'),
-      'debut': require('./assets/debut.ttf'),
-      'fearless': require('./assets/fearless.ttf'),
-      'love': require('./assets/Love.ttf'),
-      'folklore': require('./assets/folklore.ttf'),
-      'folklorev2': require('./assets/IMFePIit28P.ttf')
-    })
-      .then(() => {
-        setFontLoaded(true)
-      })
-  }, [])
+    const timer = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+  
+  useEffect(() => {
+    async function prepare() {
+      await SplashScreen.preventAutoHideAsync();
+    }
+    prepare();
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -73,6 +57,16 @@ export default function App() {
       console.error(err);
     });
   }, []);
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync()
+    }
+  }, [fontsLoaded])
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   function returnScreen() {
     switch (screen) {
