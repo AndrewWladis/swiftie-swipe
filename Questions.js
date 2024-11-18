@@ -300,7 +300,11 @@ function Questions({ setScreen, setScore }) {
                     <View style={styles.questionContainer}>
                         <View style={styles.headerContainer}>
                             <View style={styles.headerContent}>
-                                <Text style={styles.questionNumber}>Track #{questionNumber}</Text>
+                                {(questionNumber === 5) ? (
+                                    <Text style={[styles.questionNumber, { fontWeight: '900', textShadowColor: 'white', textShadowOffset: { width: 0, height: 0 }, textShadowRadius: 2, }]}>Track #{questionNumber}</Text>
+                                ) : (
+                                    <Text style={styles.questionNumber}>Track #{questionNumber}</Text>
+                                )}
                                 <Text style={[styles.timer]}>{timer}</Text>
                             </View>
                             <Text style={[styles.quote, { opacity: quoteOpacity }]}>"{quote.quote.quote}"</Text>

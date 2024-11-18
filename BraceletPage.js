@@ -126,7 +126,7 @@ function BraceletPage({ setScreen, theme }) {
                                 <TouchableOpacity style={styles.braceletRemoveButton} onPress={() => {
                                     removeLastBead()
                                     }}>
-                                    <Text style={styles.braceletButtonText}>Remove Bead</Text>
+                                    <Text style={styles.braceletButtonText}>Remove Last Bead</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -211,7 +211,7 @@ function BraceletPage({ setScreen, theme }) {
                                 <TouchableOpacity style={styles.braceletRemoveButton} onPress={() => {
                                     removeLastBead()
                                     }}>
-                                    <Text style={styles.braceletButtonText}>Remove Bead</Text>
+                                    <Text style={styles.braceletButtonText}>Remove Last Bead</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
