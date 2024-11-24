@@ -256,11 +256,11 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     creditText: {
-        fontSize: 13,
+        fontSize: 18,
         color: 'white',
         fontWeight: '800',
         textAlign: 'center',
-        marginTop: 10
+        marginTop: 30
     },
     questionContainer: {
         flex: 1,

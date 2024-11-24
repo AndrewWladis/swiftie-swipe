@@ -65,7 +65,7 @@ function GameOver({ score, setScreen, theme }) {
                     <TouchableOpacity onPress={() => { setScreen('Home') }} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: 'folklorev2' }]}>back home</Text>
                     </TouchableOpacity>
-                    <Text style={[styles.creditText, { fontFamily: 'TTPD' }]}>Created by @andywl27 on insta</Text>
+                    <Text style={[styles.creditText, { fontFamily: 'folklore' }]}>Created by @andywl27 on insta</Text>
                 </LinearGradient>
             )}
         </>
