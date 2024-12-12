@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './Styles'
 import Home from './Home'
@@ -11,13 +11,79 @@ import React, { useEffect, useState } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import BraceletPage from './BraceletPage';
+import * as Notifications from 'expo-notifications';
 
+
+// Set up the notification handler
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: true,
+  }),
+});
+
+async function registerDeviceWithBackend(token) {
+  try {
+    await fetch('http://localhost:3000/register-token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token }),
+    });
+  } catch (error) {
+    console.error('Failed to register token with backend:', error);
+  }
+}
 
 export default function App() {
   const [screen, setScreen] = useState('Home')
   const [date, setDate] = useState(new Date());
   const [theme, setTheme] = useState('1989');
   const [score, setScore] = useState([]);
+  const [expoPushToken, setExpoPushToken] = useState('');
+
+  // Function to register for push notifications
+  async function registerForPushNotificationsAsync() {
+    let token;
+
+    const { status: existingStatus } = await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+
+    if (existingStatus !== 'granted') {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+
+    if (finalStatus !== 'granted') {
+      alert('Failed to get push token for push notification!');
+      return;
+    }
+
+    token = (await Notifications.getExpoPushTokenAsync()).data;
+
+    
+    console.log(token);
+    return token;
+  }
+
+
+  useEffect(() => {
+    
+    // Inside your registerForPushNotificationsAsync function
+    registerForPushNotificationsAsync().then(token => {
+      
+      if (token) {
+        setExpoPushToken(token)
+        registerDeviceWithBackend(token);
+      }
+    });
+
+    const subscription = Notifications.addNotificationReceivedListener(notification => {
+      console.log(notification);
+    });
+
+    return () => subscription.remove();
+  }, []);
 
   const [fontsLoaded] = useFonts({
     '1989': require('./assets/Taylor Swift Handwriting.ttf'),

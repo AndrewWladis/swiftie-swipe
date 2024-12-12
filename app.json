@@ -2,7 +2,7 @@
   "expo": {
     "name": "Swiftie Swipe",
     "slug": "taylors-version",
-    "version": "1.4.7",
+    "version": "1.4.8",
     "orientation": "portrait",
     "icon": "./assets/appicon.png",
     "userInterfaceStyle": "light",
@@ -16,13 +16,24 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.andywladis.taylorsversion"
+      "bundleIdentifier": "com.andywladis.taylorsversion",
+      "buildNumber": "1.4.8",
+      "infoPlist": {
+        "UIBackgroundModes": ["remote-notification"]
+      },
+      "config": {
+        "usesPushNotifications": true,
+        "googleSignIn": {
+          "reservedClientId": "658683680374-52u5e1p4btd2m4sqa9sirknv48qu7dlg.apps.googleusercontent.com"
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/appicon.png",
         "backgroundColor": "#e8e9e1"
-      }
+      },
+      "package": "com.andywladis.taylorsversion"
     },
     "web": {
       "favicon": "./assets/ts.png"
@@ -32,9 +43,6 @@
         "projectId": "4fb6ed26-9877-4e53-b0f9-43531335ec2c"
       }
     },
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
     "updates": {
       "url": "https://u.expo.dev/4fb6ed26-9877-4e53-b0f9-43531335ec2c"
     },
@@ -42,7 +50,25 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/Taylor Swift Handwriting.ttf", "./assets/OldeEnglish.ttf", "./assets/coolvetica.otf", "./assets/ttpd.ttf", "./assets/debut.ttf", "./assets/fearless.ttf", "./assets/Love.ttf", "./assets/folklore.ttf", "./assets/IMFePIit28P.ttf"]
+          "fonts": [
+            "./assets/Taylor Swift Handwriting.ttf",
+            "./assets/OldeEnglish.ttf",
+            "./assets/coolvetica.otf",
+            "./assets/ttpd.ttf",
+            "./assets/debut.ttf",
+            "./assets/fearless.ttf",
+            "./assets/Love.ttf",
+            "./assets/folklore.ttf",
+            "./assets/IMFePIit28P.ttf"
+          ]
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
         }
       ]
     ]
