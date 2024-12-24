@@ -25,7 +25,7 @@ Notifications.setNotificationHandler({
 
 async function registerDeviceWithBackend(token) {
   try {
-    await fetch('http://localhost:3000/register-token', {
+    await fetch('https://registertoken-tvdze2fo4q-uc.a.run.app', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token }),
@@ -84,6 +84,20 @@ export default function App() {
 
     return () => subscription.remove();
   }, []);
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await Notifications.getPermissionsAsync();
+      if (status !== 'granted') {
+        console.log("Notifications permission not granted:", status);
+      } else {
+        console.log("Notifications permission granted:", status);
+      }
+    })().catch(err => {
+      console.error(err);
+    });
+  }, []);
+
 
   const [fontsLoaded] = useFonts({
     '1989': require('./assets/Taylor Swift Handwriting.ttf'),

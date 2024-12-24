@@ -2,7 +2,7 @@
   "expo": {
     "name": "Swiftie Swipe",
     "slug": "taylors-version",
-    "version": "1.4.8",
+    "version": "1.5.0",
     "orientation": "portrait",
     "icon": "./assets/appicon.png",
     "userInterfaceStyle": "light",
@@ -23,6 +23,7 @@
       },
       "config": {
         "usesPushNotifications": true,
+        "usesNonExemptEncryption": false,
         "googleSignIn": {
           "reservedClientId": "658683680374-52u5e1p4btd2m4sqa9sirknv48qu7dlg.apps.googleusercontent.com"
         }
