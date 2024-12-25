@@ -2,7 +2,7 @@
   "expo": {
     "name": "Swiftie Swipe",
     "slug": "taylors-version",
-    "version": "1.5.0",
+    "version": "1.5.2",
     "orientation": "portrait",
     "icon": "./assets/appicon.png",
     "userInterfaceStyle": "light",
@@ -19,7 +19,9 @@
       "bundleIdentifier": "com.andywladis.taylorsversion",
       "buildNumber": "1.4.8",
       "infoPlist": {
-        "UIBackgroundModes": ["remote-notification"]
+        "UIBackgroundModes": [
+          "remote-notification"
+        ]
       },
       "config": {
         "usesPushNotifications": true,
@@ -62,14 +64,6 @@
             "./assets/folklore.ttf",
             "./assets/IMFePIit28P.ttf"
           ]
-        }
-      ],
-      [
-        "expo-build-properties",
-        {
-          "ios": {
-            "useFrameworks": "static"
-          }
         }
       ]
     ]
