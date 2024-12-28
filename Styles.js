@@ -280,12 +280,13 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     quote: {
-        fontSize: 25,
+        fontSize: 31,
         color: 'white',
         fontWeight: '800',
         textAlign: 'center',
         paddingVertical: 10,
-        paddingHorizontal: 5
+        paddingHorizontal: 3,
+        fontFamily: 'folklore'
     },
     quote1989: {
         fontSize: 37,

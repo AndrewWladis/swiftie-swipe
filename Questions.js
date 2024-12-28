@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState, useEffect } from 'react'
+import { LinearGradient } from 'expo-linear-gradient';
 import styles from './Styles'
 import lyrics from './lyrics';
 
@@ -180,6 +181,16 @@ function Questions({ setScreen, setScore }) {
         options: ['Loading...', 'Loading...', 'Loading...', 'Loading...']
     });
 
+    const themecolors = ["#47d1ff", "#f5a2e0", "#e8dc5a", "#5ae89a", "#bababa", "#bd6de8", "#aedaeb", "#d3d3ff"]
+
+    function getThemeColors(element) {
+        let elementLength = element.length
+        while (elementLength >= themecolors.length) {
+            elementLength -= themecolors.length
+        }
+        return themecolors[elementLength]
+    }
+
     useEffect(() => {
         const interval = setInterval(() => {
             setTimer(timer => timer - 1);
@@ -276,7 +287,6 @@ function Questions({ setScreen, setScore }) {
                     setQuote(externalData[questionNumber])
                     setQuestionNumber(questionNumber + 1);
                     storeData(questionNumber)
-
                 }, 1500)
             } else {
                 setTimeout(() => {
@@ -289,7 +299,7 @@ function Questions({ setScreen, setScore }) {
 
     const returnColor = (num) => {
         if (color === 'normal') {
-            return "#e8e8e8";
+            return getThemeColors(quote.quote.author);
         } else {
             return color;
         }
@@ -318,7 +328,7 @@ function Questions({ setScreen, setScore }) {
                                         <Text style={styles.optionText}>{element}</Text>
                                     </View>
                                 ) : (
-                                    <View style={[styles.option, { backgroundColor: returnColor(index), }]}>
+                                    <View style={[styles.option, { backgroundColor: returnColor(index) }]}>
                                         <Text style={styles.optionText}>{element}</Text>
                                     </View>
                                 )}

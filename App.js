@@ -55,11 +55,12 @@ export default function App() {
     }
 
     if (finalStatus !== 'granted') {
-      alert('Failed to get push token for push notification!');
       return;
     }
 
-    token = (await Notifications.getExpoPushTokenAsync()).data;
+    token = (await Notifications.getExpoPushTokenAsync({
+      projectId: '4fb6ed26-9877-4e53-b0f9-43531335ec2c',
+    })).data;
 
     
     console.log(token);
@@ -75,6 +76,8 @@ export default function App() {
       if (token) {
         setExpoPushToken(token)
         registerDeviceWithBackend(token);
+      } else {
+        console.log("No token received");
       }
     });
 
