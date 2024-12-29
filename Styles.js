@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
-        borderRadius: 10,
+        borderRadius: 20,
         textAlign: 'center'
     },
     optionText: {

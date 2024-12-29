@@ -181,7 +181,7 @@ function Questions({ setScreen, setScore }) {
         options: ['Loading...', 'Loading...', 'Loading...', 'Loading...']
     });
 
-    const themecolors = ["#47d1ff", "#f5a2e0", "#e8dc5a", "#5ae89a", "#bababa", "#bd6de8", "#aedaeb", "#d3d3ff"]
+    const themecolors = ["#98f5c5", "#f3f598", "#eb98f5", "#f59898", "#98d4f5", "#ffffff", "#facaf0", "#dbdbdb", "#b5a693", "#8c93e6"]
 
     function getThemeColors(element) {
         let elementLength = element.length
@@ -299,7 +299,7 @@ function Questions({ setScreen, setScore }) {
 
     const returnColor = (num) => {
         if (color === 'normal') {
-            return getThemeColors(quote.quote.author);
+            return themecolors[questionNumber - 1];
         } else {
             return color;
         }
