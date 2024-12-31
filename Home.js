@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Bracelet from './Bracelet';
 
 
-const Home = ({ setScreen, theme }) => {
+const Home = ({ setScreen, theme, setNextScreen }) => {
     const [date, setDate] = useState(new Date());
 
     useEffect(() => {
@@ -29,12 +29,18 @@ const Home = ({ setScreen, theme }) => {
                 await AsyncStorage.setItem('@date', date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear());
             }
         } catch (e) {
-            // error reading value
+            console.log(e)
         }
     }
 
     const startUnlimited = async () => {
-        setScreen('Unlimited')
+        setScreen('AdPage')
+        setNextScreen('Unlimited')
+    }
+
+    const startStyle = async () => {
+        setScreen('AdPage')
+        setNextScreen('Style')
     }
 
     return (
@@ -53,10 +59,10 @@ const Home = ({ setScreen, theme }) => {
                     <TouchableOpacity onPress={() => getData()} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: 'TTPD' }]}>TODAY'S CHALLENGE</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => startUnlimited()} style={styles.startButton}>
+                    <TouchableOpacity onPress={() => {setScreen('AdPage'); setNextScreen('Unlimited')}} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: 'TTPD' }]}>UNLIMITED</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setScreen('Style')} style={styles.startButton}>
+                    <TouchableOpacity onPress={() => {setScreen('AdPage'); setNextScreen('Style')}} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: '1989' }]}>Style</Text>
                     </TouchableOpacity>
                 </LinearGradient>
@@ -77,7 +83,7 @@ const Home = ({ setScreen, theme }) => {
                     <TouchableOpacity onPress={() => startUnlimited()} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: 'folklorev2' }]}>unlimited</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setScreen('Style')} style={styles.startButton}>
+                    <TouchableOpacity onPress={() => startStyle()} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: '1989' }]}>Style</Text>
                     </TouchableOpacity>
                 </LinearGradient>

@@ -1,6 +1,57 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({ 
+    adContainer: {
+        width: '100%',
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    adFooter: {
+        width: '90%',
+        height: 50,
+        alignSelf: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        backgroundColor: 'black',
+    },
+    adFooterText: {
+        fontSize: 20,
+        color: 'white',
+        fontWeight: '800',
+        textAlign: 'center',
+        fontStyle: 'italic'
+    },
+    adFooterTextBold: {
+        fontWeight: '900',
+        color: '#2bfff8',
+        fontStyle: 'normal'
+    },
+    adFooterTimeLeft: {
+        fontSize: 30,
+        color: 'white',
+        fontWeight: '800',
+        textAlign: 'center',
+        marginBottom: 15,
+    },
+    adFooterX: {
+        fontSize: 30,
+        color: '#d4d4d4',
+        fontWeight: '800',
+        textAlign: 'center',
+    },
+    adHeader: {
+        width: '100%',
+        height: 30,
+        backgroundColor: 'black'
+    },
+    adImage: {
+        width: '100%',
+        height: '90%',
+        maxHeight: 900,
+        maxWidth: 430
+    },
     backHomeTTPDText: {
         fontSize: 24,
         color: 'black'
@@ -139,6 +190,11 @@ const styles = StyleSheet.create({
         color: '#546488',
         fontWeight: '800',
         marginBottom: 10
+    },
+    container: {
+        flex: 1,
+        width: '100%',
+        backgroundColor: 'black'
     },
     date: {
         fontSize: 25,

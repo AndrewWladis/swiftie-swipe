@@ -181,15 +181,7 @@ function Questions({ setScreen, setScore }) {
         options: ['Loading...', 'Loading...', 'Loading...', 'Loading...']
     });
 
-    const themecolors = ["#98f5c5", "#f3f598", "#eb98f5", "#f59898", "#98d4f5", "#ffffff", "#facaf0", "#dbdbdb", "#b5a693", "#8c93e6"]
-
-    function getThemeColors(element) {
-        let elementLength = element.length
-        while (elementLength >= themecolors.length) {
-            elementLength -= themecolors.length
-        }
-        return themecolors[elementLength]
-    }
+    const themecolors = ["#daf7e8", "#f3f598", "#eb98f5", "#f59898", "#98d4f5", "#ffffff", "#facaf0", "#dbdbdb", "#b5a693", "#8c93e6"]
 
     useEffect(() => {
         const interval = setInterval(() => {

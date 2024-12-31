@@ -6,13 +6,14 @@ import Home from './Home'
 import Questions from './Questions'
 import GameOver from './GameOver'
 import Unlimited from './Unlimited'
+import AdPage from './AdPage';
 import Style from './Style'
 import React, { useEffect, useState } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import BraceletPage from './BraceletPage';
 import * as Notifications from 'expo-notifications';
-
+import * as Network from 'expo-network';
 
 // Set up the notification handler
 Notifications.setNotificationHandler({
@@ -40,7 +41,10 @@ export default function App() {
   const [date, setDate] = useState(new Date());
   const [theme, setTheme] = useState('1989');
   const [score, setScore] = useState([]);
+  const [networkState, setNetworkState] = useState(false);
   const [expoPushToken, setExpoPushToken] = useState('');
+  const [nextScreen, setNextScreen] = useState('Home');
+
 
   // Function to register for push notifications
   async function registerForPushNotificationsAsync() {
@@ -90,6 +94,8 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
+      const networkState = await Network.getNetworkStateAsync();
+      setNetworkState(networkState.isConnected);
       const { status } = await Notifications.getPermissionsAsync();
       if (status !== 'granted') {
         console.log("Notifications permission not granted:", status);
@@ -154,7 +160,7 @@ export default function App() {
   function returnScreen() {
     switch (screen) {
       case 'Home':
-        return <Home setScreen={setScreen} theme={theme} />
+        return <Home setScreen={setScreen} theme={theme} setNextScreen={setNextScreen} />
         break;
       case 'Questions':
         return <Questions setScreen={setScreen} setScore={setScore} />
@@ -174,6 +180,14 @@ export default function App() {
       default:
         return <Home setScreen={setScreen} theme={theme} />
         break;
+    }
+  }
+
+  if (screen === 'AdPage') {
+    if (networkState) {
+      return <AdPage setScreen={setScreen} nextScreen={nextScreen} />
+    } else {
+      setScreen(nextScreen)
     }
   }
 
