@@ -169,7 +169,7 @@ export default function App() {
         return <Unlimited setScreen={setScreen} />
         break;
       case 'GameOver':
-        return <GameOver setScreen={setScreen} score={score} theme={theme} />
+        return <GameOver setScreen={setScreen} score={score} theme={theme} setNextScreen={setNextScreen} />
         break;
       case 'Style':
         return <Style setScreen={setScreen} setTheme={setTheme} theme={theme} />

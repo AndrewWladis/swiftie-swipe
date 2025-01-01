@@ -4,7 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 import * as StoreReview from 'expo-store-review';
 import styles from './Styles'
 
-function GameOver({ score, setScreen, theme }) {
+function GameOver({ score, setScreen, theme, setNextScreen }) {
     const [date, setDate] = useState(new Date());
 
     useEffect(() => {
@@ -39,6 +39,11 @@ function GameOver({ score, setScreen, theme }) {
         }
     };
 
+    const goHome = async () => {
+        setScreen('AdPage')
+        setNextScreen('Home')
+    }
+
     return (
         <>
             {(theme === 'TTPD') ? (
@@ -62,7 +67,7 @@ function GameOver({ score, setScreen, theme }) {
                     <TouchableOpacity onPress={() => onShare()} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: 'folklorev2' }]}>share</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { setScreen('Home') }} style={styles.startButton}>
+                    <TouchableOpacity onPress={() => { goHome() }} style={styles.startButton}>
                         <Text style={[styles.startButtonText, { fontFamily: 'folklorev2' }]}>back home</Text>
                     </TouchableOpacity>
                     <Text style={[styles.creditText, { fontFamily: 'folklore' }]}>Created by @andywl27 on insta</Text>
