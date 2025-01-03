@@ -39,8 +39,9 @@ const Home = ({ setScreen, theme, setNextScreen }) => {
     }
 
     const startStyle = async () => {
-        setScreen('AdPage')
-        setNextScreen('Style')
+        //setScreen('AdPage')
+        //setNextScreen('Style')
+        setScreen('Style')
     }
 
     return (
